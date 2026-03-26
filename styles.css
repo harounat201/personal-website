@@ -684,6 +684,7 @@ strong { font-weight: 700; }
 .pol-img--2 { background: linear-gradient(135deg, #3d6b4f, #6a9e6a); }
 .pol-img--3 { background: linear-gradient(135deg, #5c7a3e, #8aad5a); }
 .pol-img--4 { background: linear-gradient(135deg, #1a4a6b, #2e7dbd); }
+.pol-img--5 { background: linear-gradient(135deg, #1a4a3a, #1e7a5a); }
 
 /* ── Winner polaroids — golden shimmer ──────────────────── */
 .polaroid--winner {

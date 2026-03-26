@@ -105,12 +105,20 @@ Built at HackDuke for an interactive daily sustainability challenge platform. Us
 Stack: Kotlin, TensorFlow, TensorFlow Lite, OpenAI API
 Mobile app detecting invasive plant species via on-device TensorFlow image classification. Integrated OpenAI API via Kotlin coroutines for async plant descriptions. Optimized for offline use with TF Lite.
 
-[4] LinkedIn Voyage — LinkedIn Learning Feature Revamp (June 2025)
+[4] EduTrade — PennApps Hackathon 2024
+Stack: Firebase, AI/ML, FinTech
+- AI-powered stock options platform designed for beginner investors
+- Personalized questionnaire tailors stock recommendations to each user's risk profile and goals
+- Firebase auth backend with full login/account system
+- Personalized stock suggestions paired with visual aids; sentiment analysis feature iterates across financial news articles to gauge stock outlook
+
+[5] LinkedIn Voyage — LinkedIn Learning Feature Revamp (June 2025)
 Stack: Gemini API, RAG, Prompt Engineering
 Designed and presented a revamp of LinkedIn Learning's 'Career Charter' feature to LinkedIn engineers and executives at HQ. Used Gemini API + RAG for dynamic, context-aware course recommendations.
 
 --- AWARDS & SCHOLARSHIPS ($300k+) ---
 - HackDuke Winner — 1st Place, 2025
+- PennApps Hackathon — EduTrade (2024)
 - U.S. Congressional App Challenge Champion — 1st Place, Florida + Congressional Recognition in ML (2023)
 - Amazon Future Engineer Scholarship — one of 400 internationally
 - LinkedIn Possibilities in Tech Scholarship — one of 25 internationally; annual program with LinkedIn CEO
