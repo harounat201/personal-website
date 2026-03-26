@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harouna Thiam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Caveat:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Grain overlay -->
+  <div class="grain"></div>
+
+  <!-- Nav -->
+  <nav class="tape-nav">
+    <div class="tape-strip">
+      <span class="nav-icon"><i class="fa-solid fa-terminal"></i></span>
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#projects">projects</a>
+      <a href="#awards">awards</a>
+      <a href="#extras">activities</a>
+      <a href="#affiliations">fellowships</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="hero" id="home">
+    <canvas id="hero-canvas"></canvas>
+    <div class="coffee-ring ring-1"></div>
+    <div class="coffee-ring ring-2"></div>
+    <div class="hero-content">
+      <p class="hero-label caveat">CS + AI/ML @ Duke University</p>
+      <h1 class="hero-name">Harouna<br /><em>Thiam.</em></h1>
+      <p class="hero-sub caveat" id="typewriter"></p>
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="t-dot t-red"></span>
+          <span class="t-dot t-yellow"></span>
+          <span class="t-dot t-green"></span>
+          <span class="t-title">harouna@aws-eks ~ zsh</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="t-prompt">$</span> cat stack.txt</p>
+          <p class="t-out">LLMs · RAG · AWS Bedrock · EKS · Kubernetes</p>
+          <p><span class="t-prompt">$</span> echo $CURRENT_ROLE</p>
+          <p class="t-out">SDE Intern — AWS EKS <span class="t-blink">▌</span></p>
+          <p><span class="t-prompt">$</span> kubectl get pods --namespace=duke</p>
+          <p class="t-out">bass-connections   1/1   Running    0   42d</p>
+          <p class="t-out">hackduke-odyssey   1/1   Completed  0   90d</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint caveat">scroll ↓</div>
+    <div class="torn-bottom"></div>
+  </section>
+
+  <!-- Stats strip -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num caveat" data-target="2" data-suffix="×">0×</span>
+      <span class="stat-label">Amazon Intern</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num caveat" data-target="87" data-suffix="%">0%</span>
+      <span class="stat-label">LLM pipeline speedup</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num caveat" data-target="150" data-suffix="+">0+</span>
+      <span class="stat-label">App downloads</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num caveat" data-target="400" data-suffix="+">0+</span>
+      <span class="stat-label">Students TA'd</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num caveat" data-target="8" data-suffix="">0</span>
+      <span class="stat-label">Selective fellowships</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section class="section about-section" id="about">
+    <div class="section-tape section-tape--top caveat">about me</div>
+    <div class="about-card reveal">
+      <div class="paperclip"></div>
+      <h2 class="section-title">Hey, I'm Harouna.</h2>
+      <p>
+        I'm a sophomore at <strong>Duke University</strong> pursuing a B.S. in Computer Science
+        with a concentration in <strong>Artificial Intelligence &amp; Machine Learning</strong>
+        (expected May 2028). I'm passionate about cloud infrastructure, distributed systems,
+        and AI-driven applications.
+      </p>
+      <p>
+        I've interned at <strong>Amazon twice</strong> — first on the Fire Tablet Launcher team
+        in Devices (Summer 2025), and returning to <strong>AWS EKS</strong> (May 2026). I also
+        support graduate education at Duke's Fuqua School of Business as a Technical Coordinator
+        &amp; Grader, and research open-access academic publishing through Duke's
+        Bass Connections program.
+      </p>
+      <p>
+        Originally from <strong>Tampa, FL</strong> with West African roots — active in
+        ColorStack@Duke, NSBE, and the AiiCE National Student Advisory Board.
+      </p>
+
+      <div class="skills-block">
+        <p class="skills-label caveat">languages &amp; tools</p>
+        <div class="tag-row">
+          <span class="tag"><i class="fa-brands fa-python"></i> Python</span>
+          <span class="tag">Java</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Kotlin</span>
+          <span class="tag">Go</span>
+          <span class="tag">SQL</span>
+          <span class="tag"><i class="fa-brands fa-swift"></i> Swift</span>
+          <span class="tag"><i class="fa-brands fa-react"></i> React</span>
+        </div>
+        <div class="tag-row" style="margin-top: 0.4rem;">
+          <span class="tag"><i class="fa-brands fa-aws"></i> AWS</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag"><i class="fa-brands fa-docker"></i> Docker</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">RAG</span>
+          <span class="tag"><i class="fa-solid fa-code-branch"></i> CI/CD</span>
+        </div>
+      </div>
+
+      <p class="about-sig caveat">— Harouna, Durham NC &amp; Tampa FL</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ WORK ═══════════════════════ -->
+  <section class="section work-section" id="work">
+    <div class="section-header-strip reveal">
+      <h2>Work Experience</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal" style="--delay: 0.05s">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-logo tl-logo--aws"><i class="fa-brands fa-aws"></i></div>
+          <span class="timeline-date caveat">May 2026 – Present</span>
+          <h3>Software Development Engineer Intern <span class="timeline-badge">Returning</span></h3>
+          <p class="timeline-company">Amazon Web Services (AWS) — Elastic Kubernetes Service (EKS) · Santa Clara, CA</p>
+          <p>Returning internship on the EKS team, focusing on cloud-native Kubernetes infrastructure at scale.</p>
+          <div class="tag-row">
+            <span class="tag">Kubernetes</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Cloud Infrastructure</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal" style="--delay: 0.1s">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-logo tl-logo--duke"><span>D</span></div>
+          <span class="timeline-date caveat">March 2026 – Present</span>
+          <h3>Software &amp; AI Research Intern</h3>
+          <p class="timeline-company">Duke University — Bass Connections · Durham, NC</p>
+          <p>Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.</p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Graph Theory</span>
+            <span class="tag">AI/ML</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal" style="--delay: 0.15s">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-logo tl-logo--amazon"><i class="fa-brands fa-amazon"></i></div>
+          <span class="timeline-date caveat">May – August 2025</span>
+          <h3>Software Development Engineer Intern</h3>
+          <p class="timeline-company">Amazon — Devices, Fire Tablet Launcher · Seattle, WA</p>
+          <ul class="timeline-bullets">
+            <li>Built a serverless cloud workflow using Java and AWS Step Functions to automate JSON data transformation with LLMs — reduced processing time by <strong>87%</strong> via distributed parallel map states with Bedrock.</li>
+            <li>Designed a callback token mechanism with TypeScript SNS listeners and Lambda gateways to synchronize validation responses.</li>
+            <li>Implemented an Utterance Validation Framework with S3 handoffs to validate Alexa text-to-speech across pipeline states.</li>
+            <li>Ensured quality with automated testing suites (unit, integration, load) using JUnit, integrated into CI/CD.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Java</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">AWS Step Functions</span>
+            <span class="tag">Bedrock</span>
+            <span class="tag">Lambda</span>
+            <span class="tag">SNS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal" style="--delay: 0.2s">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-logo tl-logo--duke"><span>D</span></div>
+          <span class="timeline-date caveat">April 2025 – Present</span>
+          <h3>Technical Coordinator &amp; Grader</h3>
+          <p class="timeline-company">Duke University — Fuqua School of Business · Durham, NC</p>
+          <ul class="timeline-bullets">
+            <li>Built and deployed a course autograder with Python, Pandas, and Openpyxl — decreased TA grading time by <strong>42%</strong>.</li>
+            <li>Integrated generative AI prompts across 150+ pages of graduate textbooks for AI-assisted learning instructions.</li>
+            <li>Overseeing TA team for a <strong>400+ student</strong> course; delegated and coordinated assignment grading workflow.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Gen AI</span>
+            <span class="tag">LMS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal" style="--delay: 0.25s">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-logo tl-logo--zsuite"><span>ZS</span></div>
+          <span class="timeline-date caveat">June – August 2023</span>
+          <h3>AI/ML Software Engineer Intern</h3>
+          <p class="timeline-company">ZSuite Technologies</p>
+          <ul class="timeline-bullets">
+            <li>Developed an LLM chatbot tool with Python and LangChain to improve company representative efficiency.</li>
+            <li>Built a RAG pipeline using Weaviate vector store to ground LLM responses in company CSV data.</li>
+            <li>Containerized the codebase with Docker and Jupyter Notebooks for a scalable, modular dev environment.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Weaviate</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PROJECTS ═══════════════════════ -->
+  <section class="section projects-section" id="projects">
+    <div class="section-tape section-tape--left caveat">projects</div>
+    <h2 class="projects-heading reveal">Things I've Built</h2>
+    <div class="polaroid-grid">
+
+      <div class="pol-container reveal" style="--rot: -2deg; --delay: 0s">
+        <div class="polaroid">
+          <div class="polaroid-img pol-img--1" style="--tz: 42px">
+            <span class="pol-emoji">🎙️</span>
+          </div>
+          <div class="polaroid-caption">
+            <p class="caveat pol-title" style="--tz: 28px">Chorus App</p>
+            <p class="pol-desc" style="--tz: 18px">iOS app using Delayed Auditory Feedback &amp; choral speech synthesis to improve fluency for people who stutter. Adaptive interface supports both presentation and conversation modes.</p>
+            <div class="tag-row" style="--tz: 12px">
+              <span class="tag tag--dark">Swift</span>
+              <span class="tag tag--dark">AVFoundation</span>
+              <span class="tag tag--dark">iOS</span>
+            </div>
+            <span class="pol-award caveat" style="--tz: 36px">Apple Student Swift Challenge · Nov 2025 – Feb 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pol-container reveal" style="--rot: 1.5deg; --delay: 0.1s">
+        <div class="polaroid">
+          <div class="polaroid-img pol-img--2" style="--tz: 42px">
+            <span class="pol-emoji">🌱</span>
+          </div>
+          <div class="polaroid-caption">
+            <p class="caveat pol-title" style="--tz: 28px">Odyssey: 30 Day Journey</p>
+            <p class="pol-desc" style="--tz: 18px">Mobile sustainability challenge platform using Gemini API to generate personalized daily challenges. Secured <strong>150+ downloads</strong>.</p>
+            <div class="tag-row" style="--tz: 12px">
+              <span class="tag tag--dark">Flutter</span>
+              <span class="tag tag--dark">Gemini API</span>
+              <span class="tag tag--dark">LLMs</span>
+            </div>
+            <span class="pol-award caveat" style="--tz: 36px">🏆 HackDuke Winner · Feb 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pol-container reveal" style="--rot: -1.5deg; --delay: 0.2s">
+        <div class="polaroid">
+          <div class="polaroid-img pol-img--3" style="--tz: 42px">
+            <span class="pol-emoji">🌿</span>
+          </div>
+          <div class="polaroid-caption">
+            <p class="caveat pol-title" style="--tz: 28px">Florida GreenGuard AI</p>
+            <p class="pol-desc" style="--tz: 18px">On-device invasive species detection via TensorFlow image classification, with async OpenAI plant descriptions. Optimized for <strong>offline use</strong> with TF Lite.</p>
+            <div class="tag-row" style="--tz: 12px">
+              <span class="tag tag--dark">Kotlin</span>
+              <span class="tag tag--dark">TensorFlow Lite</span>
+              <span class="tag tag--dark">OpenAI API</span>
+            </div>
+            <span class="pol-award caveat" style="--tz: 36px">🏆 1st Place Florida · Nov 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pol-container reveal" style="--rot: 2deg; --delay: 0.3s">
+        <div class="polaroid">
+          <div class="polaroid-img pol-img--4" style="--tz: 42px">
+            <span class="pol-emoji">🗺️</span>
+          </div>
+          <div class="polaroid-caption">
+            <p class="caveat pol-title" style="--tz: 28px">LinkedIn Voyage</p>
+            <p class="pol-desc" style="--tz: 18px">Revamp of LinkedIn Learning's 'Career Charter' presented to LinkedIn engineers &amp; execs at HQ. Used Gemini + RAG for context-aware course recommendations.</p>
+            <div class="tag-row" style="--tz: 12px">
+              <span class="tag tag--dark">Gemini API</span>
+              <span class="tag tag--dark">RAG</span>
+              <span class="tag tag--dark">Prompt Engineering</span>
+            </div>
+            <span class="pol-award caveat" style="--tz: 36px">Presented @ LinkedIn HQ · June 2025</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ AWARDS ═══════════════════════ -->
+  <section class="section awards-section" id="awards">
+    <div class="awards-grid">
+
+      <!-- Scholarships -->
+      <div class="awards-paper reveal" style="--delay: 0s">
+        <div class="stamp-corner">$</div>
+        <h2 class="section-title">Scholarships & Grants ($300k+ earned)</h2>
+        <ul class="awards-list">
+
+          <li class="award-item reveal" style="--delay: 0.06s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>Amazon Future Engineer Scholarship</strong>
+              <span class="award-meta caveat">Amazon · One of 400 students internationally</span>
+              <p>Competitive scholarship recognizing early-career engineers with high potential in computer science.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.12s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>LinkedIn Possibilities in Tech Scholarship</strong>
+              <span class="award-meta caveat">LinkedIn · One of 25 students internationally</span>
+              <p>Highly selective scholarship with annual skills development alongside LinkedIn executives and the CEO.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.18s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>Jane Street UNBOXED Scholarship</strong>
+              <span class="award-meta caveat">2024 · Jane Street Capital</span>
+              <p>One of 38 students selected nationally for the UNBOXED program. Team placed 2nd in the JS UNBOXED Estimathon.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.24s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>Omega Psi Phi Fraternity Scholarship</strong>
+              <span class="award-meta caveat">Omega Psi Phi Fraternity</span>
+              <p>Merit scholarship awarded for academic excellence and community impact.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.30s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>Academic Scholarship</strong>
+              <span class="award-meta caveat">2024 · Community Foundation of Sarasota County</span>
+              <p>Selected among Sarasota high school seniors to receive $3,500 in scholarships for academic excellence.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.36s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>Manasota ASALH Scholarship</strong>
+              <span class="award-meta caveat">Association for the Study of African American Life and History</span>
+              <p>Top recipient — $2,000 renewable for two years plus mentorship, awarded among high-achieving Black students in Sarasota and Manatee County.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Hackathon Wins & Distinctions -->
+      <div class="awards-paper reveal" style="--delay: 0.1s">
+        <div class="stamp-corner">★</div>
+        <h2 class="section-title">Wins &amp; Distinctions</h2>
+        <ul class="awards-list">
+
+          <li class="award-item reveal" style="--delay: 0.16s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>HackDuke Winner — 1st Place</strong>
+              <span class="award-meta caveat">2025 · Duke University</span>
+              <p>Won the Sustainability Track at HackDuke for a mobile sustainability challenge platform built with Flutter and Gemini API.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.22s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>U.S. Congressional App Challenge Champion &amp; Recognition in ML</strong>
+              <span class="award-meta caveat">2023 · 1st Place, State of Florida · United States Congress</span>
+              <p>Built an invasive species detection app using on-device ML; won Florida's Congressional district competition and received formal U.S. Congressional Recognition in Machine Learning.</p>
+            </div>
+          </li>
+
+          <li class="award-item reveal" style="--delay: 0.28s">
+            <span class="award-icon">◈</span>
+            <div>
+              <strong>Bradenton Golden Herald Award in Technology</strong>
+              <span class="award-meta caveat">2024</span>
+              <p>One person recognized among 11 Manatee county high schools for outstanding achievement and leadership in technology.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXTRACURRICULARS ═══════════════════════ -->
+  <section class="section extras-section" id="extras">
+    <h2 class="extras-heading reveal">On Campus &amp; Beyond</h2>
+    <div class="notes-grid">
+
+      <div class="sticky-note reveal" style="--note-color: #f0d9a0; --rot: -1.5deg; --delay: 0s">
+        <p class="caveat note-org">AiiCE</p>
+        <p class="note-role">National Student Advisory Board · 2024–Present</p>
+        <p class="note-desc">Alliance for Innovative and Interdisciplinary Computing Education — advising on expanding access and innovation in CS education nationwide.</p>
+      </div>
+
+      <div class="sticky-note reveal" style="--note-color: #e8c99a; --rot: 1deg; --delay: 0.1s">
+        <p class="caveat note-org">ColorStack@Duke</p>
+        <p class="note-role">Member · 2024–Present</p>
+        <p class="note-desc">Community dedicated to increasing the number of Black and Latinx students succeeding in computing and tech careers.</p>
+      </div>
+
+      <div class="sticky-note reveal" style="--note-color: #ddb88a; --rot: -0.5deg; --delay: 0.2s">
+        <p class="caveat note-org">NSBE</p>
+        <p class="note-role">Member · 2024–Present</p>
+        <p class="note-desc">National Society of Black Engineers — committed to increasing the number of culturally responsible Black engineers who excel academically.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ AFFILIATIONS ═══════════════════════ -->
+  <section class="section affiliations-section" id="affiliations">
+    <div class="section-header-strip reveal">
+      <h2>Fellowships &amp; Programs</h2>
+    </div>
+    <p class="affiliations-sub reveal caveat">Selective programs, fellowships, and summits I've been part of.</p>
+    <div class="logo-wall">
+
+      <div class="logo-tile reveal" style="--delay: 0s">
+        <div class="logo-mark logo-duke"><span class="logo-letter">D</span></div>
+        <p class="logo-name">Duke University</p>
+        <p class="logo-sub caveat">CS + AI/ML · Class of 2028</p>
+        <p class="logo-desc">Pursuing a B.S. in Computer Science with a concentration in Artificial Intelligence &amp; Machine Learning at one of the nation's top research universities.</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.07s">
+        <div class="logo-mark logo-aws"><i class="fa-brands fa-aws"></i></div>
+        <p class="logo-name">Amazon / AWS</p>
+        <p class="logo-sub caveat">2× SDE Intern</p>
+        <p class="logo-desc">Interned on the Fire Tablet Launcher team (Summer 2025), building serverless LLM pipelines with Step Functions &amp; Bedrock. Returning to the Elastic Kubernetes Service (EKS) team (May 2026).</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.14s">
+        <div class="logo-mark logo-gs"><span class="logo-letter">GS</span></div>
+        <p class="logo-name">Goldman Sachs</p>
+        <p class="logo-sub caveat">Engineering Summit · Top 13%</p>
+        <p class="logo-desc">Selected among the top 13% of applicants for a multi-month intensive program with world-class Goldman Sachs engineers and analysts (Dec 2024 – May 2025).</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.21s">
+        <div class="logo-mark logo-js"><span class="logo-letter">JS</span></div>
+        <p class="logo-name">Jane Street</p>
+        <p class="logo-sub caveat">UNBOXED · 38 nationally</p>
+        <p class="logo-desc">One of 38 students selected nationally. Simulated real-world trading strategies using quantitative finance principles — team placed 2nd in the JS UNBOXED Estimathon (July 2024, NYC).</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.28s">
+        <div class="logo-mark logo-li"><i class="fa-brands fa-linkedin"></i></div>
+        <p class="logo-name">LinkedIn</p>
+        <p class="logo-sub caveat">Possibilities in Tech · 25 globally</p>
+        <p class="logo-desc">One of 25 students selected internationally for an annual skills development program with LinkedIn executives and the CEO, focused on building the next generation of tech leaders.</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.35s">
+        <div class="logo-mark logo-cornell"><span class="logo-letter">CT</span></div>
+        <p class="logo-name">Cornell Tech</p>
+        <p class="logo-sub caveat">Break Through Tech AI · 2026</p>
+        <p class="logo-desc">AI Fellow in Cornell Tech's Break Through Tech AI program, building real-world machine learning solutions for industry problem spaces (2026).</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.42s">
+        <div class="logo-mark logo-deshaw"><span class="logo-letter">DE</span></div>
+        <p class="logo-name">D.E. Shaw</p>
+        <p class="logo-sub caveat">Connect · NYC</p>
+        <p class="logo-desc">Invited to D.E. Shaw's NYC headquarters to connect with engineers and business executives at one of the world's most quantitative and technologically sophisticated firms.</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.49s">
+        <div class="logo-mark logo-mlt"><span class="logo-letter">MLT</span></div>
+        <p class="logo-name">MLT</p>
+        <p class="logo-sub caveat">18-month tech mentorship</p>
+        <p class="logo-desc">Selected for Management Leadership for Tomorrow's 18-month intensive technology mentorship and career development cohort, focused on advancing underrepresented leaders in tech.</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.56s">
+        <div class="logo-mark logo-bass"><span class="logo-letter">BC</span></div>
+        <p class="logo-name">Bass Connections</p>
+        <p class="logo-sub caveat">Duke University · 2026–2027</p>
+        <p class="logo-desc">Duke research initiative on open-access academic publishing using game theory and graph theory — building AI/ML tools to analyze publishing dynamics across academic networks.</p>
+      </div>
+
+      <div class="logo-tile reveal" style="--delay: 0.63s">
+        <div class="logo-mark logo-walmart"><span class="logo-letter">W</span></div>
+        <p class="logo-name">Walmart</p>
+        <p class="logo-sub caveat">Technology Summit</p>
+        <p class="logo-desc">One of ~100 selected tech students invited to explore Walmart's technology headquarters and connect with engineering and product leaders across the organization.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="caveat footer-name">Harouna Thiam</p>
+      <p class="footer-tagline">I'm always open to connecting about internships, research, collaborations, or just talking tech.</p>
+      <div class="footer-links">
+        <a href="mailto:thiamharouna201@gmail.com"><i class="fa-solid fa-envelope"></i> email</a>
+        <span>·</span>
+        <a href="https://github.com/harounat201" target="_blank"><i class="fa-brands fa-github"></i> github</a>
+        <span>·</span>
+        <a href="https://linkedin.com/in/harounathiam" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin</a>
+      </div>
+      <p class="footer-credit caveat">brewed with ☕ in Durham, NC</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
