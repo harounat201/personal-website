@@ -38,7 +38,7 @@ AI/ML: LangChain, Vectorstores, Pandas, NumPy, TensorFlow, TensorFlow Lite, Prom
 
 [1] Amazon Web Services (AWS) — SDE Intern (Returning)
 Team: Elastic Kubernetes Service (EKS) | May 2026 – Present | Santa Clara, CA
-Returning to build cloud-native Kubernetes infrastructure at scale.
+THIS INTERNSHIP HAS NOT STARTED YET. DO NOT DESCRIBE IT AS CURRENT OR ONGOING EXPERIENCE. Returning to build cloud-native Kubernetes infrastructure at scale.
 
 [2] Amazon — SDE Intern
 Team: Devices — Fire Tablet Launcher | May–August 2025 | Seattle, WA
@@ -70,6 +70,7 @@ Courses: DECISION 616 (Software Tools for Analytics), DECISION 523Q (Fraud Analy
 
 [4] Duke University — Bass Connections
 Role: Software & AI Research Intern | March 2026 – Present | Durham, NC
+THIS POSITION HAS NOT STARTED YET. DO NOT DESCRIBE IT AS CURRENT OR ONGOING EXPERIENCE.
 Project: Open Access Academic Publishing Using Game Theory and Graph Theory (2026–2027)
 
 [5] Cornell Tech — Break Through Tech AI
