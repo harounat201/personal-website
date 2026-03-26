@@ -385,10 +385,11 @@ window.addEventListener("scroll", () => {
 
 /* ── Chat Widget ───────────────────────────────────────── */
 (function chatWidget() {
-  const widget   = document.getElementById("chat-widget");
-  const toggle   = document.getElementById("chat-toggle");
-  const panel    = document.getElementById("chat-panel");
-  const messages = document.getElementById("chat-messages");
+  const widget      = document.getElementById("chat-widget");
+  const toggle      = document.getElementById("chat-toggle");
+  const panel       = document.getElementById("chat-panel");
+  const messages    = document.getElementById("chat-messages");
+  const suggestions = document.getElementById("chat-suggestions");
   const form     = document.getElementById("chat-form");
   const input    = document.getElementById("chat-input");
 
@@ -435,12 +436,24 @@ window.addEventListener("scroll", () => {
     form.querySelector("button[type='submit']").disabled = true;
   }
 
+  // Suggestion chips — click to send
+  suggestions.querySelectorAll(".suggestion-chip").forEach((chip) => {
+    chip.addEventListener("mouseenter", () => ring.classList.add("cursor-hover"));
+    chip.addEventListener("mouseleave", () => ring.classList.remove("cursor-hover"));
+    chip.addEventListener("click", () => {
+      input.value = chip.textContent;
+      suggestions.classList.add("hidden");
+      form.dispatchEvent(new Event("submit", { cancelable: true }));
+    });
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const text = input.value.trim();
     if (!text || isLoading || msgCount >= MSG_CAP) return;
 
     input.value = "";
+    suggestions.classList.add("hidden");
     isLoading = true;
     msgCount++;
     addMsg(text, "user");
