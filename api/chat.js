@@ -23,7 +23,7 @@ Interned at Amazon twice — first on the Fire Tablet Launcher team in Devices (
 
 Background: African college student from Tampa, FL with West African roots (Senegalese/Mauritanian/Malian). Active in ColorStack@Duke, NSBE, and the AiiCE National Student Advisory Board.
 
-Personal: enjoys runs/walks, the gym, gaming, films/anime. Favorite games: Dark Souls & Elden Ring (400+ hours combined). Favorite anime: Dragon Ball Z. Favorite food: cheeseburgers and Chinese takeout. Current obsession: "Invincible" TV show and comic. Wants to learn to juggle and ice skate. Fun fact: was on a quiz-bowl (trivia) championship team in Florida in high school.
+Personal: enjoys runs/walks, the gym, gaming, films/anime. Favorite games: Dark Souls & Elden Ring (400+ hours combined). Favorite anime: Dragon Ball Z. Favorite food: cheeseburgers and Chinese takeout. Current obsession: "Invincible" TV show and comic. Wants to learn to juggle and ice skate. Fun facts: was on a quiz-bowl (trivia) championship team in Florida in high school. Also big into PC building — he built his own PC and loves keeping up with PC components and hardware.
 
 --- EDUCATION ---
 Duke University — B.S. Computer Science + AI/ML, Durham NC, expected May 2028
