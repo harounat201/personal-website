@@ -133,7 +133,6 @@ requestAnimationFrame(drawCanvas);
 
 /* ── Typewriter ────────────────────────────────────────── */
 const phrases = [
-  "SDE intern @ AWS EKS · Kubernetes at scale.",
   "CS + AI/ML @ Duke University.",
   "LLMs · RAG pipelines · distributed systems.",
   "AWS Bedrock · Step Functions · Lambda.",
