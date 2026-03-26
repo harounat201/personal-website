@@ -684,6 +684,56 @@ strong { font-weight: 700; }
 .pol-img--2 { background: linear-gradient(135deg, #3d6b4f, #6a9e6a); }
 .pol-img--3 { background: linear-gradient(135deg, #5c7a3e, #8aad5a); }
 .pol-img--4 { background: linear-gradient(135deg, #1a4a6b, #2e7dbd); }
+
+/* ── Winner polaroids — golden shimmer ──────────────────── */
+.polaroid--winner {
+  border: 1.5px solid rgba(212,175,55,0.55);
+  animation: goldenGlow 2.8s ease-in-out infinite;
+}
+@keyframes goldenGlow {
+  0%, 100% {
+    box-shadow:
+      4px 6px 20px rgba(60,32,16,0.14),
+      0 2px 4px rgba(60,32,16,0.08),
+      0 0 14px rgba(212,175,55,0.18),
+      0 0 0 1px rgba(212,175,55,0.12);
+  }
+  50% {
+    box-shadow:
+      4px 6px 20px rgba(60,32,16,0.14),
+      0 2px 4px rgba(60,32,16,0.08),
+      0 0 36px rgba(212,175,55,0.55),
+      0 0 0 1px rgba(212,175,55,0.45);
+  }
+}
+/* Shimmer sweep lives inside .polaroid-img which already has overflow:hidden */
+.polaroid--winner .polaroid-img::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 55%;
+  height: 220%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,223,80,0.18) 35%,
+    rgba(255,255,255,0.55) 50%,
+    rgba(255,223,80,0.18) 65%,
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: shimmerSweep 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmerSweep {
+  0%   { left: -80%; }
+  100% { left: 140%; }
+}
+.polaroid--winner .pol-award {
+  color: #b8860b;
+  text-shadow: 0 0 8px rgba(212,175,55,0.4);
+}
 .pol-emoji { font-size: 3rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
 .pol-award {
   display: block;
