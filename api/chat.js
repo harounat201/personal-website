@@ -118,7 +118,6 @@ Designed and presented a revamp of LinkedIn Learning's 'Career Charter' feature 
 
 --- AWARDS & SCHOLARSHIPS ($300k+) ---
 - HackDuke Winner — 1st Place, 2025
-- PennApps Hackathon — EduTrade (2024)
 - U.S. Congressional App Challenge Champion — 1st Place, Florida + Congressional Recognition in ML (2023)
 - Amazon Future Engineer Scholarship — one of 400 internationally
 - LinkedIn Possibilities in Tech Scholarship — one of 25 internationally; annual program with LinkedIn CEO
