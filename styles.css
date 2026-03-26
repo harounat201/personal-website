@@ -107,6 +107,34 @@ strong { font-weight: 700; }
 }
 .tape-strip a:hover { color: var(--rust); }
 .tape-strip a:hover::after { transform: scaleX(1); }
+.nav-resume {
+  color: var(--rust) !important;
+  border: 1.5px solid rgba(160,67,30,0.35);
+  border-radius: 20px;
+  padding: 0.15rem 0.7rem !important;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s !important;
+}
+.nav-resume:hover {
+  background: var(--rust) !important;
+  color: var(--cream) !important;
+  border-color: var(--rust);
+}
+.nav-resume::after { display: none !important; }
+
+/* ── Resume link in work header ────────────────────────── */
+.resume-link {
+  font-size: 1rem;
+  color: var(--rust);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.resume-link:hover { opacity: 1; color: var(--warm-brown); }
 
 /* ── Hero ──────────────────────────────────────────────── */
 .hero {
