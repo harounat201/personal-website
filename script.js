@@ -35,7 +35,7 @@ document.addEventListener("mousemove", (e) => {
   requestAnimationFrame(animateRing);
 })();
 
-document.querySelectorAll("a, button, .polaroid, .logo-tile, .sticky-note, .timeline-card").forEach((el) => {
+document.querySelectorAll("a, button, .polaroid, .logo-tile, .sticky-note, .timeline-card, #chat-toggle, #chat-form button").forEach((el) => {
   el.addEventListener("mouseenter", () => ring.classList.add("cursor-hover"));
   el.addEventListener("mouseleave", () => ring.classList.remove("cursor-hover"));
 });
@@ -382,6 +382,83 @@ window.addEventListener("scroll", () => {
   if (rings[0]) rings[0].style.transform = `translateY(${y * 0.18}px)`;
   if (rings[1]) rings[1].style.transform = `translateY(${y * 0.09}px)`;
 }, { passive: true });
+
+/* ── Chat Widget ───────────────────────────────────────── */
+(function chatWidget() {
+  const widget   = document.getElementById("chat-widget");
+  const toggle   = document.getElementById("chat-toggle");
+  const panel    = document.getElementById("chat-panel");
+  const messages = document.getElementById("chat-messages");
+  const form     = document.getElementById("chat-form");
+  const input    = document.getElementById("chat-input");
+
+  let isOpen    = true;
+  let isLoading = false;
+  const history = []; // { role, content }[]
+
+  // Start open
+  widget.classList.add("open");
+  panel.hidden = false;
+
+  toggle.addEventListener("click", () => {
+    isOpen = !isOpen;
+    widget.classList.toggle("open", isOpen);
+    panel.hidden = !isOpen;
+    if (isOpen) {
+      setTimeout(() => input.focus(), 280);
+    }
+  });
+
+  function addMsg(text, role) {
+    const div = document.createElement("div");
+    div.className = `chat-msg chat-msg--${role}`;
+    div.innerHTML = `<p>${text}</p>`;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const div = document.createElement("div");
+    div.className = "chat-msg chat-msg--bot chat-msg--typing";
+    div.innerHTML = `<div class="chat-dots"><span></span><span></span><span></span></div>`;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text || isLoading) return;
+
+    input.value = "";
+    isLoading = true;
+    addMsg(text, "user");
+    history.push({ role: "user", content: text });
+
+    const typingEl = addTyping();
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, history: history.slice(-6) }),
+      });
+      const data = await res.json();
+      typingEl.remove();
+
+      const reply = data.reply || "Sorry, something went wrong.";
+      addMsg(reply, "bot");
+      history.push({ role: "assistant", content: reply });
+    } catch {
+      typingEl.remove();
+      addMsg("Hmm, I couldn't connect. Try again in a moment.", "bot");
+    } finally {
+      isLoading = false;
+    }
+  });
+})();
 
 /* ── Timeline dot click ripple ─────────────────────────── */
 document.querySelectorAll(".timeline-card").forEach((card) => {
