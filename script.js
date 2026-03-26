@@ -392,8 +392,10 @@ window.addEventListener("scroll", () => {
   const form     = document.getElementById("chat-form");
   const input    = document.getElementById("chat-input");
 
+  const MSG_CAP = 10;
   let isOpen    = true;
   let isLoading = false;
+  let msgCount  = 0;
   const history = []; // { role, content }[]
 
   // Start open
@@ -427,13 +429,20 @@ window.addEventListener("scroll", () => {
     return div;
   }
 
+  function lockChat() {
+    input.disabled = true;
+    input.placeholder = "Message limit reached — reach out via email!";
+    form.querySelector("button[type='submit']").disabled = true;
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const text = input.value.trim();
-    if (!text || isLoading) return;
+    if (!text || isLoading || msgCount >= MSG_CAP) return;
 
     input.value = "";
     isLoading = true;
+    msgCount++;
     addMsg(text, "user");
     history.push({ role: "user", content: text });
 
@@ -451,8 +460,14 @@ window.addEventListener("scroll", () => {
       const reply = data.reply || "Sorry, something went wrong.";
       addMsg(reply, "bot");
       history.push({ role: "assistant", content: reply });
+
+      if (msgCount >= MSG_CAP) {
+        addMsg("That's the limit for this session! Feel free to email me at thiamharouna201@gmail.com.", "bot");
+        lockChat();
+      }
     } catch {
       typingEl.remove();
+      msgCount--; // don't count failed requests
       addMsg("Hmm, I couldn't connect. Try again in a moment.", "bot");
     } finally {
       isLoading = false;
