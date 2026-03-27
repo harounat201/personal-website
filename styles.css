@@ -135,6 +135,18 @@ strong { font-weight: 700; }
   white-space: nowrap;
 }
 .resume-link:hover { opacity: 1; color: var(--warm-brown); }
+.resume-link-inline {
+  font-size: 1.35rem;
+  color: var(--rust);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  transition: color 0.2s, opacity 0.2s;
+  opacity: 0.9;
+}
+.resume-link-inline:hover { opacity: 1; color: var(--warm-brown); }
 
 /* ── Hero ──────────────────────────────────────────────── */
 .hero {
