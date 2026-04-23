@@ -1,0 +1,215 @@
+============================
+HAROUNA THIAM — PERSONAL WEBSITE CONTENT
+============================
+Use this file to contextualize the LLM.
+============================
+
+--- HERO / HEADER ---
+Name: Harouna Thiam
+Tagline: CS + AI/ML @ Duke University
+Location: Tampa, FL & Durham, NC
+Email: thiamharouna201@gmail.com
+LinkedIn: linkedin.com/in/harounathiam
+GitHub: github.com/harounat201
+Phone: +1 813-585-2175
+
+One-liner bio:
+Sophomore CS + AI/ML student at Duke University building at the intersection of cloud infrastructure, AI systems, and impactful software. Returning intern at Amazon Web Services (EKS), previous intern at Amazon Devices, and recognized nationally for technical excellence.
+
+--- ABOUT ME ---
+I'm a sophomore at Duke University pursuing a B.S. in Computer Science with a concentration in Artificial Intelligence and Machine Learning (expected May 2028). I'm passionate about cloud infrastructure, distributed systems, and AI-driven applications.
+
+I've interned at Amazon twice — first on the Fire Tablet Launcher team in Devices (Summer 2025), and now returning to AWS on the Elastic Kubernetes Service (EKS) team (starting May 2026). I also support graduate-level education at Duke's Fuqua School of Business as a Technical Coordinator & Grader, and conduct research on open-access academic publishing through Duke's Bass Connections program.
+
+Outside of work, I'm an African college student from Tampa, FL with West African roots (Senegalese/Mauritanian/Malian). I'm active in ColorStack@Duke, NSBE, and the AiiCE National Student Advisory Board. I enjoy going on runs/walks, hitting the gym, gaming, watching films/anime. 
+- Favorite video games: Dark Souls, Elden Ring (400+ hours combined)
+- Favorite food: Cheeseburgers, Chinese takeout
+- Current obsession: "Invincible" TV show and comic.
+- What do I want to learn how to do?: Juggle, learn to ice skate.
+- Fun fact: I was on a quiz-bowl (trivia) championship team in Florida back in high school.
+
+--- EDUCATION ---
+Institution: Duke University
+Degree: B.S. in Computer Science + Artificial Intelligence & Machine Learning
+Location: Durham, NC
+Expected Graduation: May 2028
+Relevant Coursework: Data Structures & Algorithms, Computer Systems, Discrete Mathematics, Probability, Distributed Systems, Linear Algebra
+
+--- SKILLS ---
+Languages: Python, Java, React, SQL, Kotlin, TypeScript/JavaScript, R, Swift, Go
+Infrastructure: AWS (Lambda, S3, Bedrock, SNS, Step Functions, EKS), Docker, Git, CI/CD, GitHub Actions, REST APIs, Distributed Systems, Firebase, Kubernetes
+AI/ML/Data: LangChain, Vectorstores, Pandas, NumPy, TensorFlow, TensorFlow Lite, Prompt Engineering, RAG, Weaviate, Codex, Gemini API, Claude API, Cursor
+
+--- EXPERIENCE ---
+
+[1] Amazon Web Services (AWS)
+Role: Software Development Engineer Intern (Returning)
+Team: Elastic Kubernetes Service (EKS)
+Dates: May 2026 – Present
+Location: Santa Clara, CA
+Details: Returning internship on the EKS team, focusing on cloud-native Kubernetes infrastructure at scale. DID NOT HAVE THIS EXPERIENCE YET. NO APPLICABLE EXPERIENCE.
+
+[2] Amazon
+Role: Software Development Engineer Intern
+Team: Devices — Fire Tablet Launcher
+Dates: May 2025 – August 2025
+Location: Seattle, WA
+
+PROJECT DEEP DIVE — Alexa Utterance Validation System:
+Problem:
+Next-gen Fire Tablets needed an accurate, up-to-date data bank of potential on-device Alexa actions, reflective of real Tablet capabilities. The existing JSON metadata of Alexa capabilities was unvalidated and too verbose for reliable LLM prompt injection at runtime.
+
+Materials & Tools:
+- Raw JSON data of Alexa capabilities
+- Internal Alexa Utterance Validation Framework (TTS-based)
+- AWS Step Functions, AWS Bedrock (Claude Sonnet), AWS Lambda, SNS, S3
+
+Solution — Serverless Cloud Workflow:
+Built a multi-stage serverless pipeline using AWS Step Functions with the following flow:
+
+STAGE 1 — Initial Description Generation:
+- Lambda queries and filters raw JSON data from S3
+- Distributed Processing (Map) State fans out across JSON items in parallel
+- Claude Sonnet (via Bedrock) summarizes each JSON capability into natural language utterances
+- Output prefix mapped and redirected to S3 keys; generated utterances CSV stored in S3
+
+STAGE 2 — Utterance Validation Framework:
+- Validation Service receives generated utterances
+- SNS Topic dispatches validation tasks
+- Workflow Gateway (Wait for Callback) uses callback token mechanism to pause execution
+- SNS Topic Listener Lambda validates SNS responses and returns callback token + batch ID
+- Utterance validation results stored in S3
+
+STAGE 3 — Final Description Generation:
+- Distributed Processing (Map) State fans out again
+- Claude Sonnet evaluates each utterance against validation results
+- Lambda evaluates utterances; results stored as Utterance Ranges in S3
+- Final JSON output written to JSON Output Data S3 bucket
+- EventBridge triggers StepFunctions Workflow Definition for orchestration
+
+Result:
+A clean, validated store of accurate on-device Alexa capabilities — concise and structured for LLM prompt injection during Fire Tablet runtime. Reduced JSON processing time by 87% via parallel Map state distribution.
+
+Resume Bullets:
+- Built a serverless cloud workflow using Java and AWS Step Functions to automate JSON data transformation with LLMs
+- Reduced JSON processing time by 87% using a distributed parallel map state with AWS Bedrock and State Machines
+- Designed a callback token mechanism with TypeScript SNS listeners and Lambda gateways to synchronize validation responses
+- Implemented an Utterance Validation Framework with S3 handoffs between workflow states to validate Alexa text-to-speech
+- Ensured code quality with automated testing suites (unit, integration, load) using JUnit, integrated into a CI/CD pipeline
+
+[3] Duke University — Fuqua School of Business
+Role: Technical Coordinator & Grader (Head Grader & Software Engineer)
+Courses: DECISION 616 (Software Tools for Analytics), DECISION 523Q (Fraud Analytics)
+Dates: April 2025 – Present
+Location: Durham, NC
+Details:
+- Built and deployed a course autograder using Python, Pandas, and Openpyxl; decreased TA grading time by 42%
+- Integrated generative AI prompts across 150+ pages of graduate textbooks to create AI-assisted learning instructions
+- Facilitated integration of a new Learning Management System (LMS) for AI-enhanced graduate education
+- Managing a team of Graduate TAs; overseeing a 400+ student course and delegating assignment grading
+
+[4] Duke University — Bass Connections
+Role: Software & AI Research Intern
+Project: Open Access Academic Publishing Using Game Theory and Graph Theory (2026–2027)
+Dates: March 2026 – Present
+Location: Durham, NC
+
+[5] Cornell Tech — Break Through Tech AI Program
+Role: AI Fellow
+Dates: March 2026 – Present
+Details: Building real-world AI/ML solutions for industry problem spaces. Program description: Machine Learning Foundations Curriculum: Work with industry-relevant tools over the summer to analyze real-world data sets and identify patterns and relationships to create robust data science projects.
+AI Studio and Portfolio Development: Tackle real-world ML Challenge Projects in the Fall and Spring AI Studio to develop your professional portfolio with the guidance of academic and industry advisors.   
+Mentorship and Career Coaching: To support your professional goals, you will work closely with an industry mentor in a small group throughout the course of the program to engage in case studies and skill-building simulations with personalized feedback.
+
+[6] Goldman Sachs
+Role: Engineering Summit Fellow
+Dates: December 2024 – May 2025
+Details: Selected among the top 13% of applicants for a multi-month intensive program with Goldman Sachs engineers and analysts.
+
+[7] Jane Street
+Role: Software Engineering Fellow — UNBOXED Program
+Dates: July 2024
+Location: New York, NY
+Details: One of 38 students selected nationally. Simulated real-world trading strategies using quantitative finance principles; team placed 2nd in the JS UNBOXED Estimathon.
+
+[8] ZSuite Technologies
+Role: AI/ML Software Engineer Intern
+Dates: June 2023 – August 2023
+Details:
+- Developed an LLM chatbot with Python and LangChain to answer customer service questions and improve company representative efficiency
+- Trained the LLM on company protocols and platform data; built a Weaviate vector database instance to improve query accuracy via RAG
+- Containerized codebase with Docker and Jupyter Notebooks for a scalable, modular development environment
+
+--- PROJECTS ---
+
+[1] HackDuke 'Code for Good' (Odyssey: 30 Day Journey) — 1st Place (Sustainability Track)
+Date: February 2025
+Stack: Flutter, Gemini API, LLMs
+- Built a full mobile app at HackDuke for an interactive daily sustainability challenge platform
+- Used Gemini API to dynamically generate personalized challenges and gamify user progress
+- Applied game design and UI/UX principles; secured 150+ downloads
+
+[2] U.S. Congressional App Challenge (Florida GreenGuard AI) — 1st Place, Florida
+Date: November 2023
+Stack: Kotlin, TensorFlow, TensorFlow Lite, OpenAI API
+- Built a mobile app to detect invasive plant species using on-device TensorFlow image classification
+- Integrated OpenAI API via Kotlin coroutines for dynamic, async plant descriptions
+- Optimized for offline use with TensorFlow Lite for on-device inference with low latency
+
+[3] LinkedIn Voyage — LinkedIn Learning Feature Revamp
+Date: June 2025
+Stack: Google Gemini API, RAG, Prompt Engineering
+- Designed and presented a revamp of LinkedIn Learning's 'Career Charter' feature to LinkedIn engineers and executives at HQ
+- Used Gemini API and RAG for dynamic, chronological, context-aware course recommendations
+- Prototyped a semantic retrieval and prompt engineering workflow to personalize learning paths
+
+[4] Chorus - Delayed Auditory Feedback on iOS to Aid Speech Fluency in People Who Stutter (PWS)
+Date: Nov 2025 – Feb 2026
+Stack: iOS, Swift, Swift UI, AVFoundation
+- iOS speech-support application that leverages Delayed Auditory Feedback (DAF) and Text-to-Speech choral speech to help people who stutter improve fluency during conversations and presentations.
+- Designed an adaptive speech companion interface with both screen-on presentation mode and screen-off conversation support, enabling users to synchronize speech with real-time audio feedback and reduce disfluency.
+- Integrated AVFoundation audio processing and speech synthesis to simulate the scientifically documented “choral effect,” translating speech research into an accessible, user-centered mobile tool.
+
+--- AWARDS & SCHOLARSHIPS ($300k+) ---
+- HackDuke Winner — 1st Place (2025)
+- U.S. Congressional App Challenge Champion — 1st Place, Florida AND Congressional Recognition in Machine Learning (2023)
+- Amazon Future Engineer Scholarship — One of 400 students internationally. Competitive scholarship recognizing early-career engineers with high potential in computer science.
+- LinkedIn Possibilities in Tech Scholarship — One of 25 students internationally. Highly selective scholarship with annual skills development alongside LinkedIn executives and the CEO.
+- Jane Street UNBOXED Scholarship (2024)
+- Bradenton Golden Herald Award in Technology (2024)
+- Omega Psi Phi Fraternity Scholarship
+- Sarasota community foundation scholarship
+
+--- PROFESSIONAL DEVELOPMENT ---
+- Amazon Future Engineer — 400 students internationally, early career engineering program
+- LinkedIn Possibilities in Tech — 25 students internationally, annual skills development with LinkedIn execs/CEO
+- Walmart Technology Summit — ~100 selected tech students, explored Walmart HQ
+- Goldman Sachs Engineering Summit — 13% selection rate, intensive program with world-class analysts
+- D.E. Shaw Connect — Invited to NYC to connect with D.E. Shaw engineers and business execs
+- Management Leadership for Tomorrow (MLT) — Selected for 18-month intensive technology mentorship
+
+--- LEADERSHIP ROLES AND MEMBERSHIPS ---
+- Alliance for Innovative and Interdisciplinary Computing Education (AiiCE) — National Student Advisory Board Member
+- ColorStack@Duke — Member
+- National Society of Black Engineers (NSBE) — Member
+
+--- PUBLICATIONS ---
+Title: "Computer Science as an Educational Force: Bolster Cognitive Development in Young Students" - Featured in the Book "The Future is STEM" By Top Young Scientist Rishab Kumar Jain.
+
+--- CONTACT CTA ---
+I'm always open to connecting about internships, research, collaborations, or just talking tech.
+Reach me at: thiamharouna201@gmail.com
+LinkedIn: linkedin.com/in/harounathiam
+GitHub: github.com/harounat201
+
+--- FUN, HOBBIES, INTERESTS ---
+I enjoy going on runs/walks, hitting the gym, gaming, watching films/anime.
+- Favorite video games: Dark Souls, Elden Ring (400+ hours combined)
+- Favorite food: Cheeseburgers, Chinese takeout
+- Current obsession: "Invincible" TV show and comic.
+- What do I want to learn how to do?: Juggle, learn to ice skate.
+- Fun fact: I was on a quiz-bowl (trivia) championship team in Florida back in high school.
+
+============================
+END OF FILE
+============================
