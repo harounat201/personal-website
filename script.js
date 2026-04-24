@@ -35,7 +35,7 @@ document.addEventListener("mousemove", (e) => {
   requestAnimationFrame(animateRing);
 })();
 
-document.querySelectorAll("a, button, .polaroid, .logo-tile, .sticky-note, .timeline-card, #chat-toggle, #chat-form button").forEach((el) => {
+document.querySelectorAll("a, button, .polaroid, .logo-tile, .sticky-note, .timeline-card, .press-card, #chat-toggle, #chat-form button").forEach((el) => {
   el.addEventListener("mouseenter", () => ring.classList.add("cursor-hover"));
   el.addEventListener("mouseleave", () => ring.classList.remove("cursor-hover"));
 });
@@ -485,6 +485,46 @@ window.addEventListener("scroll", () => {
       isLoading = false;
     }
   });
+})();
+
+/* ── Press cards scroll parallax ──────────────────────── */
+(function pressParallax() {
+  const strip = document.querySelector('.press-strip');
+  const cards = [...document.querySelectorAll('.press-card')];
+  if (!strip || !cards.length) return;
+
+  // Each card gets a unique vertical speed and rotation nudge
+  const factors = [
+    { y:  0.06, rot:  0.45 },
+    { y: -0.05, rot: -0.35 },
+    { y:  0.04, rot: -0.40 },
+    { y: -0.07, rot:  0.55 },
+  ];
+
+  let ticking = false;
+
+  function update() {
+    const rect  = strip.getBoundingClientRect();
+    const viewH = window.innerHeight;
+    // p = 0 when strip is centred in viewport; ±0.5 at viewport edges
+    const p = (rect.top + rect.height * 0.5 - viewH * 0.5) / viewH;
+
+    cards.forEach((card, i) => {
+      const f  = factors[i] || factors[0];
+      const dy = p * viewH * f.y;
+      const dr = p * f.rot;
+      card.style.setProperty('--card-dy', `${dy.toFixed(2)}px`);
+      card.style.setProperty('--card-dr', `${dr.toFixed(3)}deg`);
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+
+  update(); // seed values on load
 })();
 
 /* ── Timeline dot click ripple ─────────────────────────── */
