@@ -133,10 +133,9 @@ requestAnimationFrame(drawCanvas);
 
 /* ── Typewriter ────────────────────────────────────────── */
 const phrases = [
-  "CS + AI/ML @ Duke University.",
   "LLMs · RAG pipelines · distributed systems.",
   "AWS Bedrock · Step Functions · Lambda.",
-  "builder of things that matter.",
+  "building robust software.",
 ];
 
 let phraseIndex = 0, charIndex = 0, deleting = false;
