@@ -392,14 +392,10 @@ window.addEventListener("scroll", () => {
   const input    = document.getElementById("chat-input");
 
   const MSG_CAP = 10;
-  let isOpen    = true;
+  let isOpen    = false;
   let isLoading = false;
   let msgCount  = 0;
   const history = []; // { role, content }[]
-
-  // Start open
-  widget.classList.add("open");
-  panel.hidden = false;
 
   toggle.addEventListener("click", () => {
     isOpen = !isOpen;
