@@ -24,7 +24,6 @@
   <nav class="tape-nav">
     <div class="tape-strip">
       <span class="nav-icon"><i class="fa-solid fa-terminal"></i></span>
-      <a href="#about">about</a>
       <a href="#work">work</a>
       <a href="#projects">projects</a>
       <a href="#affiliations">fellowships</a>
@@ -36,40 +35,21 @@
   </nav>
 
   <!-- ═══════════════════════ HERO ═══════════════════════ -->
-  <section class="hero" id="home">
+  <div class="hero-press-wrapper">
     <canvas id="hero-canvas"></canvas>
     <div class="coffee-ring ring-1"></div>
     <div class="coffee-ring ring-2"></div>
-    <div class="hero-content">
-      <p class="hero-label caveat">CS + AI/ML @ Duke University</p>
-      <h1 class="hero-name">Harouna<br /><em>Thiam.</em></h1>
-      <p class="hero-sub caveat" id="typewriter"></p>
-    </div>
-    <div class="torn-bottom"></div>
-  </section>
 
-  <!-- Stats strip -->
-  <div class="stats-strip">
-    <div class="stat-item">
-      <span class="stat-num caveat" data-target="3" data-suffix="×">0×</span>
-      <span class="stat-label">SWE Intern</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num caveat" data-target="150" data-suffix="+">0+</span>
-      <span class="stat-label">App downloads</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num caveat" data-target="2" data-suffix="">0</span>
-      <span class="stat-label">Hackathons won</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num caveat" data-target="8" data-suffix="">0</span>
-      <span class="stat-label">Program Affiliations</span>
-    </div>
-  </div>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="hero-label caveat">CS + AI/ML @ Duke University</p>
+        <h1 class="hero-name">Harouna<br /><em>Thiam.</em></h1>
+        <p class="hero-sub caveat" id="typewriter"></p>
+      </div>
+    </section>
 
-  <!-- ═══════════════════════ PRESS STRIP ═══════════════════════ -->
-  <div class="press-strip" id="press">
+    <!-- ═══════════════════════ PRESS STRIP ═══════════════════════ -->
+    <div class="press-strip" id="press">
     <div class="press-inner">
       <h3 class="press-heading">In The News</h3>
       <div class="press-cards">
@@ -112,54 +92,10 @@
 
       </div>
     </div>
-    <div class="torn-bottom"></div>
   </div>
 
-  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
-  <section class="section about-section" id="about">
-    <div class="section-tape section-tape--top caveat">about me</div>
-    <div class="about-card reveal">
-      <div class="paperclip"></div>
-      <h2 class="section-title">Hey, I'm Harouna.</h2>
-      <p>
-        I'm a sophomore at <strong>Duke University</strong> pursuing a B.S. in <strong>Computer Science</strong> with a concentration in <strong>Artificial Intelligence &amp; Machine Learning</strong> (expected May 2028).
-      </p>
-      <p>
-        I've interned at <strong>Amazon</strong> twice — building <strong>serverless LLM workflows</strong> on the Devices team, and returning to <strong>AWS Elastic Kubernetes Service</strong> this summer to work on <strong>cloud-native infrastructure</strong> at scale. Outside of internships, I build things that matter to me: a <strong>Kubernetes controller</strong> for GPU node lifecycle management in <strong>distributed ML training</strong>, an <strong>iOS app</strong> to help people who stutter, a <strong>hackathon-winning</strong> sustainability platform.
-      </p>
-      <p>
-        Right now, I'm exploring the implementation of horizontal autoscaling (node rightsizing and consolidation) for cost effective GPU node provisioning in distributed ML training on Kubernetes.
-      </p>
-      <p>
-        Originally from <strong>Tampa, FL</strong> with West African roots. Active in <strong>ColorStack@Duke</strong>, <strong>NSBE</strong>, and the <strong>AiiCE National Student Advisory Board</strong>. I think a lot about what it means to build a career in tech while staying grounded in where you come from.
-      </p>
-
-      <div class="skills-block">
-        <p class="skills-label caveat">languages &amp; tools</p>
-        <div class="tag-row">
-          <span class="tag"><i class="fa-brands fa-python"></i> Python</span>
-          <span class="tag">Java</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Kotlin</span>
-          <span class="tag">Go</span>
-          <span class="tag">SQL</span>
-          <span class="tag"><i class="fa-brands fa-swift"></i> Swift</span>
-          <span class="tag"><i class="fa-brands fa-react"></i> React</span>
-        </div>
-        <div class="tag-row" style="margin-top: 0.4rem;">
-          <span class="tag"><i class="fa-brands fa-aws"></i> AWS</span>
-          <span class="tag">Kubernetes</span>
-          <span class="tag"><i class="fa-brands fa-docker"></i> Docker</span>
-          <span class="tag">LangChain</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">RAG</span>
-          <span class="tag"><i class="fa-solid fa-code-branch"></i> CI/CD</span>
-        </div>
-      </div>
-
-      <p class="about-sig caveat">— Harouna, Durham NC &amp; Tampa FL</p>
-    </div>
-  </section>
+    <div class="torn-bottom"></div>
+  </div><!-- /.hero-press-wrapper -->
 
   <!-- ═══════════════════════ WORK ═══════════════════════ -->
   <section class="section work-section" id="work">

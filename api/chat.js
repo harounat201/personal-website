@@ -201,6 +201,17 @@ export default async function handler(req) {
     });
   }
 
+  // Save message to Vercel KV (fire-and-forget, don't block the response)
+  const kvUrl = process.env.KV_REST_API_URL;
+  const kvToken = process.env.KV_REST_API_TOKEN;
+  if (kvUrl && kvToken) {
+    const entry = JSON.stringify({ message, ts: new Date().toISOString() });
+    fetch(`${kvUrl}/lpush/chatbot_messages/${encodeURIComponent(entry)}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${kvToken}` },
+    }).catch(() => {}); // silent fail — don't block chat if KV is down
+  }
+
   const messages = [
     ...history.slice(-6), // keep last 3 exchanges for context
     { role: "user", content: message },

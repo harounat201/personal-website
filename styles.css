@@ -148,15 +148,21 @@ strong { font-weight: 700; }
 }
 .resume-link-inline:hover { opacity: 1; color: var(--warm-brown); }
 
+/* ── Hero + Press wrapper (shared animated background) ──── */
+.hero-press-wrapper {
+  position: relative;
+  background: linear-gradient(160deg, #1c0c04 0%, #3a1a08 55%, #3C2010 100%);
+  overflow: hidden;
+}
+
 /* ── Hero ──────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(160deg, #1c0c04 0%, #3a1a08 45%, #5c2e10 100%);
+  background: none;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
 }
 .coffee-ring {
   position: absolute;
@@ -186,6 +192,12 @@ strong { font-weight: 700; }
   position: relative;
   z-index: 2;
   padding: 2rem;
+}
+.press-strip .press-inner,
+.press-strip .press-cards,
+.press-strip .press-heading {
+  position: relative;
+  z-index: 2;
 }
 .hero-label {
   color: var(--tan);
@@ -219,7 +231,7 @@ strong { font-weight: 700; }
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-/* ── Hero canvas ───────────────────────────────────────── */
+/* ── Hero canvas — covers the full hero+press wrapper ───── */
 #hero-canvas {
   position: absolute;
   inset: 0;
@@ -227,6 +239,7 @@ strong { font-weight: 700; }
   height: 100%;
   z-index: 1;
   opacity: 0.55;
+  pointer-events: none;
 }
 
 /* ── Terminal widget ───────────────────────────────────── */
@@ -904,8 +917,7 @@ strong { font-weight: 700; }
 /* ── Press Strip ───────────────────────────────────────── */
 .press-strip {
   position: relative;
-  background: var(--dark-brown);
-  border-top: 3px solid var(--rust);
+  background: none;
   padding: 2.8rem 2rem 5rem;
 }
 .press-inner {
