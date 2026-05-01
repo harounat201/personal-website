@@ -514,6 +514,23 @@ strong { font-weight: 700; }
   border: none;
   position: relative;
   padding: 8px 0;
+  max-height: 420px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196,160,106,0.5) transparent;
+}
+.exp-timeline::-webkit-scrollbar {
+  width: 4px;
+}
+.exp-timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+.exp-timeline::-webkit-scrollbar-thumb {
+  background: rgba(196,160,106,0.5);
+  border-radius: 4px;
+}
+.exp-timeline::-webkit-scrollbar-thumb:hover {
+  background: rgba(160,67,30,0.5);
 }
 .exp-timeline::before {
   content: '';
