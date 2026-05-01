@@ -103,108 +103,227 @@
       <h2>Work Experience</h2>
       <a href="Harouna_Thiam-Resume-.pdf" target="_blank" rel="noopener" class="resume-link-inline caveat"><i class="fa-solid fa-file-lines"></i> view résumé</a>
     </div>
-    <div class="timeline">
 
-      <div class="timeline-item reveal" style="--delay: 0.05s">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="tl-logo tl-logo--aws"><i class="fa-brands fa-aws"></i></div>
-          <span class="timeline-date caveat">May 2026 – August 2026</span>
-          <h3>Software Development Engineer Intern <span class="timeline-badge">Returning</span></h3>
-          <p class="timeline-company">Amazon Web Services (AWS) — Elastic Kubernetes Service (EKS) · Santa Clara, CA</p>
-          <p>Returning internship on the EKS team, focusing on cloud-native Kubernetes infrastructure at scale.</p>
-          <div class="tag-row">
-            <span class="tag">Kubernetes</span>
-            <span class="tag">AWS</span>
-            <span class="tag">Cloud Infrastructure</span>
+    <div class="exp-container reveal" id="exp-container">
+
+      <!-- LEFT: timeline nav -->
+      <nav class="exp-timeline" aria-label="Experience list">
+
+        <div class="exp-timeline-item active" data-target="exp-bass" role="button" tabindex="0">
+          <div class="exp-tl-company">Duke University</div>
+          <div class="exp-tl-role">ML Research Intern</div>
+          <div class="exp-tl-date">Incoming · 2026</div>
+        </div>
+
+        <div class="exp-timeline-item" data-target="exp-eks" role="button" tabindex="0">
+          <div class="exp-tl-company">Amazon Web Services</div>
+          <div class="exp-tl-role">Software Development Intern</div>
+          <div class="exp-tl-date">May – Aug 2026</div>
+        </div>
+
+        <div class="exp-timeline-item" data-target="exp-tablet" role="button" tabindex="0">
+          <div class="exp-tl-company">Amazon — Devices</div>
+          <div class="exp-tl-role">Software Development Intern</div>
+          <div class="exp-tl-date">May – Aug 2025</div>
+        </div>
+
+        <div class="exp-timeline-item" data-target="exp-fuqua" role="button" tabindex="0">
+          <div class="exp-tl-company">Duke Fuqua</div>
+          <div class="exp-tl-role">Software Engineer &amp; Course Assistant</div>
+          <div class="exp-tl-date">Apr 2025 – Present</div>
+        </div>
+
+        <div class="exp-timeline-item" data-target="exp-zsuite" role="button" tabindex="0">
+          <div class="exp-tl-company">ZSuite Technologies</div>
+          <div class="exp-tl-role">AI/ML Software Engineer Intern</div>
+          <div class="exp-tl-date">Jun – Aug 2023</div>
+        </div>
+
+      </nav>
+
+      <!-- RIGHT: detail panels -->
+      <div class="exp-detail">
+
+        <!-- AWS EKS -->
+        <div class="exp-panel" id="exp-eks">
+          <div class="exp-panel-header">
+            <div class="exp-panel-header-left">
+              <div class="exp-panel-eyebrow">Amazon Web Services · Elastic Kubernetes Service</div>
+              <h3 class="exp-panel-role">
+                Software Development Intern
+                <span class="exp-status-badge badge-returning">Returning</span>
+              </h3>
+              <div class="exp-panel-meta">Santa Clara, CA</div>
+            </div>
+            <div class="exp-panel-date-badge">
+              <div class="exp-badge-period">May – Aug 2026</div>
+              <div class="exp-badge-location">Cloud-native Kubernetes</div>
+            </div>
+          </div>
+          <div class="exp-bullets">
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Returning internship on the EKS team, focusing on <strong>cloud-native Kubernetes infrastructure at scale</strong>.</p>
+            </div>
+          </div>
+          <div class="exp-skills">
+            <span class="exp-skill-chip">Kubernetes</span>
+            <span class="exp-skill-chip">Go</span>
+            <span class="exp-skill-chip">AWS</span>
+            <span class="exp-skill-chip">Cloud Infrastructure</span>
           </div>
         </div>
-      </div>
 
-      <div class="timeline-item reveal" style="--delay: 0.1s">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="tl-logo tl-logo--duke"><span>D</span></div>
-          <span class="timeline-date caveat">August 2026 – 2027</span>
-          <h3>Undergraduate Research Intern <span class="timeline-badge">Incoming</span></h3>
-          <p class="timeline-company">Duke University — Bass Connections · Durham, NC</p>
-          <p>Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.</p>
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">Graph Theory</span>
-            <span class="tag">AI/ML</span>
+        <!-- Amazon Devices -->
+        <div class="exp-panel" id="exp-tablet">
+          <div class="exp-panel-header">
+            <div class="exp-panel-header-left">
+              <div class="exp-panel-eyebrow">Amazon · Devices — Fire Tablet Launcher</div>
+              <h3 class="exp-panel-role">Software Development Intern</h3>
+              <div class="exp-panel-meta">Seattle, WA</div>
+            </div>
+            <div class="exp-panel-date-badge">
+              <div class="exp-badge-period">May – Aug 2025</div>
+            </div>
+          </div>
+          <div class="exp-bullets">
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Built a serverless cloud workflow using <strong>Java and AWS Step Functions</strong> to automate JSON data transformation with LLMs — reduced processing time by <strong>87%</strong> via distributed parallel map states with Bedrock.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Designed a callback token mechanism with <strong>TypeScript SNS listeners</strong> and Lambda gateways to synchronize validation responses.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Implemented an Utterance Validation Framework with <strong>S3 handoffs</strong> to validate Alexa text-to-speech across pipeline states.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Ensured code quality with automated testing suites (unit, integration, load) using <strong>JUnit</strong>, integrated into CI/CD.</p>
+            </div>
+          </div>
+          <div class="exp-skills">
+            <span class="exp-skill-chip">Java</span>
+            <span class="exp-skill-chip">TypeScript</span>
+            <span class="exp-skill-chip">AWS Bedrock</span>
+            <span class="exp-skill-chip">Step Functions</span>
+            <span class="exp-skill-chip">Lambda</span>
+            <span class="exp-skill-chip">SNS</span>
+            <span class="exp-skill-chip">S3</span>
+            <span class="exp-skill-chip">JUnit</span>
+            <span class="exp-skill-chip">CI/CD</span>
           </div>
         </div>
-      </div>
 
-      <div class="timeline-item reveal" style="--delay: 0.15s">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="tl-logo tl-logo--amazon"><i class="fa-brands fa-amazon"></i></div>
-          <span class="timeline-date caveat">May – August 2025</span>
-          <h3>Software Development Engineer Intern</h3>
-          <p class="timeline-company">Amazon — Devices, Fire Tablet Launcher · Seattle, WA</p>
-          <ul class="timeline-bullets">
-            <li>Built a serverless cloud workflow using Java and AWS Step Functions to automate JSON data transformation with LLMs — reduced processing time by <strong>87%</strong> via distributed parallel map states with Bedrock.</li>
-            <li>Designed a callback token mechanism with TypeScript SNS listeners and Lambda gateways to synchronize validation responses.</li>
-            <li>Implemented an Utterance Validation Framework with S3 handoffs to validate Alexa text-to-speech across pipeline states.</li>
-            <li>Ensured quality with automated testing suites (unit, integration, load) using JUnit, integrated into CI/CD.</li>
-          </ul>
-          <div class="tag-row">
-            <span class="tag">Java</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">AWS Step Functions</span>
-            <span class="tag">Bedrock</span>
-            <span class="tag">Lambda</span>
-            <span class="tag">SNS</span>
+        <!-- Fuqua -->
+        <div class="exp-panel" id="exp-fuqua">
+          <div class="exp-panel-header">
+            <div class="exp-panel-header-left">
+              <div class="exp-panel-eyebrow">Duke Fuqua School of Business · Technology &amp; Operations</div>
+              <h3 class="exp-panel-role">Software Engineer &amp; Course Assistant</h3>
+              <div class="exp-panel-meta">Durham, NC</div>
+            </div>
+            <div class="exp-panel-date-badge">
+              <div class="exp-badge-period">Apr 2025 – Present</div>
+            </div>
+          </div>
+          <div class="exp-bullets">
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Built and deployed a course autograder using <strong>Python, Pandas, and Openpyxl</strong> — decreased TA grading time by <strong>42%</strong>.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Integrated generative AI prompts across <strong>150+ pages of graduate textbooks</strong> for AI-assisted learning instructions.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Facilitated the integration of a new <strong>LMS</strong> for AI-enhanced graduate student learning.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Overseeing TA team for a course of <strong>400+ students</strong>, delegating grading and coordinating logistics.</p>
+            </div>
+          </div>
+          <div class="exp-skills">
+            <span class="exp-skill-chip">Python</span>
+            <span class="exp-skill-chip">Pandas</span>
+            <span class="exp-skill-chip">Openpyxl</span>
+            <span class="exp-skill-chip">Generative AI</span>
+            <span class="exp-skill-chip">LMS Integration</span>
           </div>
         </div>
-      </div>
 
-      <div class="timeline-item reveal" style="--delay: 0.2s">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="tl-logo tl-logo--duke"><span>D</span></div>
-          <span class="timeline-date caveat">April 2025 – Present</span>
-          <h3>Software Engineer &amp; Course Assistant</h3>
-          <p class="timeline-company">Duke University — Fuqua School of Business · Durham, NC</p>
-          <ul class="timeline-bullets">
-            <li>Built and deployed a course autograder with Python, Pandas, and Openpyxl — decreased TA grading time by <strong>42%</strong>.</li>
-            <li>Integrated generative AI prompts across 150+ pages of graduate textbooks for AI-assisted learning instructions.</li>
-            <li>Overseeing TA team for a <strong>400+ student</strong> course; delegated and coordinated assignment grading workflow.</li>
-          </ul>
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Gen AI</span>
-            <span class="tag">LMS</span>
+        <!-- ZSuite -->
+        <div class="exp-panel" id="exp-zsuite">
+          <div class="exp-panel-header">
+            <div class="exp-panel-header-left">
+              <div class="exp-panel-eyebrow">ZSuite Technologies · Platform</div>
+              <h3 class="exp-panel-role">AI/ML Software Engineer Intern</h3>
+              <div class="exp-panel-meta">Remote</div>
+            </div>
+            <div class="exp-panel-date-badge">
+              <div class="exp-badge-period">Jun – Aug 2023</div>
+            </div>
+          </div>
+          <div class="exp-bullets">
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Developed an <strong>LLM chatbot tool</strong> with Python and LangChain, increasing efficiency of company representative response workflows.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Curated relevant context to an LLM from CSV files through a <strong>vector store with Weaviate and RAG</strong>, improving query accuracy.</p>
+            </div>
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Containerized code and workspace with <strong>Docker and Jupyter Notebooks</strong> for a scalable, modular dev environment.</p>
+            </div>
+          </div>
+          <div class="exp-skills">
+            <span class="exp-skill-chip">Python</span>
+            <span class="exp-skill-chip">LangChain</span>
+            <span class="exp-skill-chip">Weaviate</span>
+            <span class="exp-skill-chip">RAG</span>
+            <span class="exp-skill-chip">Docker</span>
+            <span class="exp-skill-chip">LLMs</span>
           </div>
         </div>
-      </div>
 
-      <div class="timeline-item reveal" style="--delay: 0.25s">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="tl-logo tl-logo--zsuite"><span>ZS</span></div>
-          <span class="timeline-date caveat">June – August 2023</span>
-          <h3>Software Engineer Intern</h3>
-          <p class="timeline-company">ZSuite Technologies</p>
-          <ul class="timeline-bullets">
-            <li>Developed an LLM chatbot tool with Python and LangChain to improve company representative efficiency.</li>
-            <li>Built a RAG pipeline using Weaviate vector store to ground LLM responses in company CSV data.</li>
-            <li>Containerized the codebase with Docker and Jupyter Notebooks for a scalable, modular dev environment.</li>
-          </ul>
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">LangChain</span>
-            <span class="tag">RAG</span>
-            <span class="tag">Weaviate</span>
-            <span class="tag">Docker</span>
+        <!-- Bass Connections -->
+        <div class="exp-panel active" id="exp-bass">
+          <div class="exp-panel-header">
+            <div class="exp-panel-header-left">
+              <div class="exp-panel-eyebrow">Duke University · Bass Connections</div>
+              <h3 class="exp-panel-role">
+                Machine Learning Research Intern
+                <span class="exp-status-badge badge-incoming">Incoming</span>
+              </h3>
+              <div class="exp-panel-meta">Durham, NC</div>
+            </div>
+            <div class="exp-panel-date-badge">
+              <div class="exp-badge-period">Aug 2026 – 2027</div>
+            </div>
+          </div>
+          <div class="exp-bullets">
+            <div class="exp-bullet">
+              <div class="exp-bullet-dot"></div>
+              <p class="exp-bullet-text">Researching <strong>open-access academic publishing</strong> using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.</p>
+            </div>
+          </div>
+          <div class="exp-skills">
+            <span class="exp-skill-chip">Python</span>
+            <span class="exp-skill-chip">ML / AI</span>
+            <span class="exp-skill-chip">Graph Theory</span>
+            <span class="exp-skill-chip">Game Theory</span>
+            <span class="exp-skill-chip">Research</span>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div><!-- /.exp-detail -->
+    </div><!-- /.exp-container -->
   </section>
 
   <!-- ═══════════════════════ PROJECTS ═══════════════════════ -->

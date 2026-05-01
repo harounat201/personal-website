@@ -522,15 +522,49 @@ window.addEventListener("scroll", () => {
   update(); // seed values on load
 })();
 
-/* ── Timeline dot click ripple ─────────────────────────── */
-document.querySelectorAll(".timeline-card").forEach((card) => {
-  card.addEventListener("click", (e) => {
-    const ripple = document.createElement("span");
-    ripple.className = "ripple";
-    const rect = card.getBoundingClientRect();
-    ripple.style.left = `${e.clientX - rect.left}px`;
-    ripple.style.top  = `${e.clientY - rect.top}px`;
-    card.appendChild(ripple);
-    ripple.addEventListener("animationend", () => ripple.remove());
+/* ── Experience panel switcher ─────────────────────────── */
+(function () {
+  const items = document.querySelectorAll('.exp-timeline-item');
+  let current = document.querySelector('.exp-timeline-item.active');
+  let pendingTimer = null;
+
+  function activate(item) {
+    if (item === current) return;
+
+    // Cancel any in-flight transition immediately
+    if (pendingTimer !== null) {
+      clearTimeout(pendingTimer);
+      pendingTimer = null;
+    }
+
+    // Immediately hide all panels and clean up inline styles
+    document.querySelectorAll('.exp-panel').forEach(p => {
+      p.classList.remove('active');
+      p.style.opacity = '';
+      p.style.transform = '';
+    });
+
+    // Update nav state
+    items.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    current = item;
+
+    // Show target panel after a short delay for the fade-in
+    const nextPanel = document.getElementById(item.dataset.target);
+    pendingTimer = setTimeout(function () {
+      nextPanel.classList.add('active');
+      pendingTimer = null;
+    }, 30);
+  }
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function () { activate(item); });
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(item); }
+      const all = Array.from(items);
+      const idx = all.indexOf(item);
+      if (e.key === 'ArrowDown' && idx < all.length - 1) activate(all[idx + 1]);
+      if (e.key === 'ArrowUp' && idx > 0) activate(all[idx - 1]);
+    });
   });
-});
+})();
