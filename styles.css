@@ -504,7 +504,7 @@ strong { font-weight: 700; }
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 0 32px;
-  align-items: start;
+  align-items: stretch;
   position: relative;
 }
 
@@ -514,7 +514,6 @@ strong { font-weight: 700; }
   border: none;
   position: relative;
   padding: 8px 0;
-  max-height: 420px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(196,160,106,0.5) transparent;
@@ -789,10 +788,16 @@ strong { font-weight: 700; }
   .exp-timeline {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 0 12px 0;
+    scrollbar-width: auto;
+    scrollbar-color: rgba(160,67,30,0.6) rgba(196,160,106,0.2);
+    padding: 0 0 8px 0;
   }
-  .exp-timeline::-webkit-scrollbar { display: none; }
+  .exp-timeline::-webkit-scrollbar { display: block; height: 3px; }
+  .exp-timeline::-webkit-scrollbar-track { background: rgba(196,160,106,0.2); border-radius: 2px; }
+  .exp-timeline::-webkit-scrollbar-thumb { background: rgba(160,67,30,0.6); border-radius: 2px; }
+  .exp-timeline::-webkit-scrollbar-thumb:hover { background: rgba(160,67,30,0.9); }
+  /* Force scrollbar to always show on iOS/Safari */
+  .exp-timeline { -webkit-overflow-scrolling: touch; overflow-x: scroll; }
   .exp-timeline::before { display: none; }
   .exp-timeline-item {
     padding: 6px 16px 10px 16px;
