@@ -780,6 +780,32 @@ strong { font-weight: 700; }
   border: 1px solid rgba(192,106,26,0.3);
 }
 
+/* ── Experience mobile dot indicators ──────────────────── */
+.exp-dots {
+  display: none;
+}
+@media (max-width: 680px) {
+  .exp-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+  .exp-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1.5px solid var(--kraft);
+    background: transparent;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+  .exp-dot.active {
+    background: var(--rust);
+    border-color: var(--rust);
+  }
+}
+
 @media (max-width: 680px) {
   .exp-container {
     grid-template-columns: 1fr;
@@ -788,16 +814,11 @@ strong { font-weight: 700; }
   .exp-timeline {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: auto;
-    scrollbar-color: rgba(160,67,30,0.6) rgba(196,160,106,0.2);
-    padding: 0 0 8px 0;
+    scrollbar-width: none;
+    padding: 0 0 4px 0;
+    -webkit-overflow-scrolling: touch;
   }
-  .exp-timeline::-webkit-scrollbar { display: block; height: 3px; }
-  .exp-timeline::-webkit-scrollbar-track { background: rgba(196,160,106,0.2); border-radius: 2px; }
-  .exp-timeline::-webkit-scrollbar-thumb { background: rgba(160,67,30,0.6); border-radius: 2px; }
-  .exp-timeline::-webkit-scrollbar-thumb:hover { background: rgba(160,67,30,0.9); }
-  /* Force scrollbar to always show on iOS/Safari */
-  .exp-timeline { -webkit-overflow-scrolling: touch; overflow-x: scroll; }
+  .exp-timeline::-webkit-scrollbar { display: none; }
   .exp-timeline::before { display: none; }
   .exp-timeline-item {
     padding: 6px 16px 10px 16px;

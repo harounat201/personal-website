@@ -525,31 +525,44 @@ window.addEventListener("scroll", () => {
 /* ── Experience panel switcher ─────────────────────────── */
 (function () {
   const items = document.querySelectorAll('.exp-timeline-item');
+  const dotsContainer = document.getElementById('exp-dots');
   let current = document.querySelector('.exp-timeline-item.active');
   let pendingTimer = null;
+
+  // Build dots
+  const dots = Array.from(items).map((item, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'exp-dot' + (item.classList.contains('active') ? ' active' : '');
+    dot.setAttribute('aria-label', `Select experience ${i + 1}`);
+    dot.addEventListener('click', () => activate(item));
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  function updateDots() {
+    const activeIndex = Array.from(items).indexOf(current);
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+  }
 
   function activate(item) {
     if (item === current) return;
 
-    // Cancel any in-flight transition immediately
     if (pendingTimer !== null) {
       clearTimeout(pendingTimer);
       pendingTimer = null;
     }
 
-    // Immediately hide all panels and clean up inline styles
     document.querySelectorAll('.exp-panel').forEach(p => {
       p.classList.remove('active');
       p.style.opacity = '';
       p.style.transform = '';
     });
 
-    // Update nav state
     items.forEach(i => i.classList.remove('active'));
     item.classList.add('active');
     current = item;
+    updateDots();
 
-    // Show target panel after a short delay for the fade-in
     const nextPanel = document.getElementById(item.dataset.target);
     pendingTimer = setTimeout(function () {
       nextPanel.classList.add('active');
