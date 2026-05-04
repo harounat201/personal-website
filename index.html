@@ -6,8 +6,8 @@
   <title>Harouna Thiam</title>
   <meta property="og:title" content="Harouna Thiam" />
   <meta property="og:description" content="CS + AI/ML @ Duke University" />
-  <meta property="og:url" content="https://www.harounathiam.dev/" />
-  <meta property="og:image" content="https://www.harounathiam.dev/website-image-preview.png" />
+  <meta property="og:url" content="https://harounathiam.dev/" />
+  <meta property="og:image" content="https://harounathiam.dev/website-image-preview.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -368,9 +368,9 @@ function WheelSite() {
   }, []);
 
   // Ring geometry
-  const R = 230;
+  const R = 260;
   const STROKE = 3;
-  const SIZE = 620;
+  const SIZE = 680;
   const cx = SIZE / 2;
   const cy = SIZE / 2;
   const n = NAV_ITEMS.length;
@@ -845,18 +845,19 @@ function WheelSite() {
         <div style={{
           position: 'absolute',
           left: 0, top: 0, bottom: 0,
-          width: 260,
+          width: 310,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
           overflowY: 'auto',
+          overflowX: 'hidden',
           padding: '72px 24px 32px 32px',
           zIndex: 20,
           opacity: item && (item.detail || item.link) ? 1 : 0,
           transform: item && (item.detail || item.link) ? 'translateX(0)' : 'translateX(-18px)',
           transition: 'opacity 0.38s ease, transform 0.38s ease',
           pointerEvents: item && (item.detail || item.link) ? 'auto' : 'none',
-          background: 'linear-gradient(to right, oklch(98.8% 0.006 240) 55%, transparent)',
+          background: 'linear-gradient(to right, oklch(98.8% 0.006 240) 82%, transparent)',
         }}>
           {/* Primary link button */}
           {item && item.link && (
