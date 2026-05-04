@@ -268,7 +268,7 @@ const SECTIONS = {
         headline: 'U.S. Congressional Recognition',
         body: 'Recognized by U.S. House Rep. Vern Buchanan for applications of Machine Learning in biodiversity conservation.',
         meta: ['U.S. Congress · FL-16', 'Press Release', ''],
-        link: { label: 'View Congressional App Challenge', href: 'https://www.congressionalappchallenge.us/23-fl16/' },
+        link: { label: 'View Press Release', href: 'https://www.congressionalappchallenge.us/23-fl16/' },
       },
       {
         label: 'LinkedIn HQ',
@@ -399,8 +399,20 @@ function WheelSite() {
     }, 200);
   }
 
-  // Build segments
   const toRad = d => (d * Math.PI) / 180;
+
+  const section = activeSection ? SECTIONS[activeSection] : null;
+  const item = section ? section.items[activeItem] : null;
+
+  // Center radius for content area
+  const INNER_R = R - 16;
+  const FULL_SVG = SIZE + 140;
+  const mobileSvgSize = Math.min(window.innerWidth - 16, 800);
+  const mobileScale = mobileSvgSize / FULL_SVG;
+  const labelFontSize = isMobile ? 8.5 / mobileScale : 10;
+  const LABEL_R = R + 25 - labelFontSize * 0.35;
+
+  // Build segments
   const segments = NAV_ITEMS.map((label, i) => {
     const sliceDeg = 360 / n;
     const startDeg = i * sliceDeg - 90 + GAP_DEG / 2;
@@ -411,8 +423,6 @@ function WheelSite() {
     const y2 = cy + R * Math.sin(toRad(endDeg));
     const large = sliceDeg - GAP_DEG > 180 ? 1 : 0;
     const midDeg = (startDeg + endDeg) / 2;
-    // Text arc path — slightly outside the ring
-    const LABEL_R = R + 22;
     const tlx1 = cx + LABEL_R * Math.cos(toRad(startDeg));
     const tly1 = cy + LABEL_R * Math.sin(toRad(startDeg));
     const tlx2 = cx + LABEL_R * Math.cos(toRad(endDeg));
@@ -422,15 +432,6 @@ function WheelSite() {
     const arcPath = `M ${tlx1} ${tly1} A ${LABEL_R} ${LABEL_R} 0 ${large} 1 ${tlx2} ${tly2}`;
     return { label, x1, y1, x2, y2, large, midDeg, isActive, pathId, arcPath };
   });
-
-  const section = activeSection ? SECTIONS[activeSection] : null;
-  const item = section ? section.items[activeItem] : null;
-
-  // Center radius for content area
-  const INNER_R = R - 16;
-  const FULL_SVG = SIZE + 140;
-  const mobileSvgSize = Math.min(window.innerWidth - 16, 400);
-  const mobileScale = mobileSvgSize / FULL_SVG;
 
   return (
     <div style={{
@@ -566,14 +567,14 @@ function WheelSite() {
             {/* Curved label along arc */}
             <text
               fill={isActive ? 'oklch(22% 0.1 240)' : 'oklch(52% 0.05 240)'}
-              fontSize={10}
+              fontSize={labelFontSize}
               fontFamily="Plus Jakarta Sans"
               fontWeight={isActive ? 500 : 300}
               letterSpacing="3"
               style={{ userSelect: 'none', transition: 'fill 0.3s' }}
             >
               <textPath href={`#${pathId}`} startOffset="50%" textAnchor="middle">
-                {NAV_LABELS[label].toUpperCase()}
+                {(isMobile && label === 'Activities' ? 'Fellowships' : NAV_LABELS[label]).toUpperCase()}
               </textPath>
             </text>
           </g>
@@ -612,7 +613,7 @@ function WheelSite() {
             transition: 'opacity 0.28s ease',
           }}>
             <div style={{
-              fontFamily: 'Lora', fontSize: 32,
+              fontFamily: 'Lora', fontSize: isMobile ? 38 : 32,
               color: 'oklch(18% 0.04 240)', lineHeight: 1.08, marginBottom: 10,
             }}>
               Harouna<br /><em>Thiam</em>
@@ -622,7 +623,7 @@ function WheelSite() {
               background: 'oklch(72% 0.07 240)', margin: '0 auto 12px',
             }}></div>
             <div style={{
-              fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 10.5,
+              fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: isMobile ? 13 : 10.5,
               letterSpacing: '0.2em', textTransform: 'uppercase',
               color: 'oklch(56% 0.06 240)',
             }}>Computer Science &amp; AI/ML @ Duke</div>
