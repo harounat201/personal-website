@@ -1026,7 +1026,216 @@ function WheelSite() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<WheelSite />);
+// ─── CHAT WIDGET ──────────────────────────────────────────────────────────────
+function ChatWidget() {
+  const [open, setOpen] = React.useState(false);
+  const [messages, setMessages] = React.useState([
+    { role: 'bot', text: 'Ask me anything about Harouna — his work, projects, or background.' }
+  ]);
+  const [input, setInput] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [msgCount, setMsgCount] = React.useState(0);
+  const history = React.useRef([]);
+  const bottomRef = React.useRef(null);
+  const inputRef = React.useRef(null);
+  const MSG_CAP = 10;
+
+  React.useEffect(() => {
+    if (open) setTimeout(() => inputRef.current?.focus(), 80);
+  }, [open]);
+
+  React.useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, loading]);
+
+  async function send() {
+    const text = input.trim();
+    if (!text || loading || msgCount >= MSG_CAP) return;
+    setInput('');
+    setLoading(true);
+    setMsgCount(c => c + 1);
+    setMessages(m => [...m, { role: 'user', text }]);
+    history.current.push({ role: 'user', content: text });
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history.current.slice(-6) }),
+      });
+      const data = await res.json();
+      const reply = data.reply || 'Sorry, something went wrong.';
+      history.current.push({ role: 'assistant', content: reply });
+      setMessages(m => [...m, { role: 'bot', text: reply }]);
+      if (msgCount + 1 >= MSG_CAP) {
+        setMessages(m => [...m, { role: 'bot', text: 'That\'s the limit for this session — reach Harouna at thiamharouna201@gmail.com.' }]);
+      }
+    } catch {
+      setMessages(m => [...m, { role: 'bot', text: 'Couldn\'t connect. Try again in a moment.' }]);
+      setMsgCount(c => c - 1);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const disabled = loading || msgCount >= MSG_CAP;
+
+  return (
+    <div style={{ position: 'fixed', bottom: 24, left: 24, zIndex: 200, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+
+      {/* Panel */}
+      {open && (
+        <div style={{
+          marginBottom: 10,
+          width: 300,
+          maxHeight: 420,
+          background: 'oklch(99% 0.004 240)',
+          border: '1px solid oklch(88% 0.04 240)',
+          borderRadius: 12,
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          boxShadow: '0 8px 40px oklch(20% 0.05 240 / 0.10)',
+        }}>
+          {/* Header */}
+          <div style={{
+            padding: '12px 16px',
+            borderBottom: '1px solid oklch(91% 0.03 240)',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          }}>
+            <div>
+              <div style={{ fontFamily: 'Lora', fontSize: 13, color: 'oklch(20% 0.07 240)' }}>Ask about Harouna</div>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9.5, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'oklch(60% 0.04 240)', marginTop: 2 }}>AI Assistant</div>
+            </div>
+            <button
+              onClick={() => setOpen(false)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'oklch(60% 0.04 240)', fontSize: 16, lineHeight: 1, padding: 2 }}
+            >×</button>
+          </div>
+
+          {/* Messages */}
+          <div style={{
+            flex: 1, overflowY: 'auto', padding: '14px 16px',
+            display: 'flex', flexDirection: 'column', gap: 10,
+            scrollbarWidth: 'thin', scrollbarColor: 'oklch(84% 0.04 240) transparent',
+          }}>
+            {messages.map((msg, i) => (
+              <div key={i} style={{
+                alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                maxWidth: '84%',
+              }}>
+                <div style={{
+                  fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 12.5, lineHeight: 1.6,
+                  color: msg.role === 'user' ? 'white' : 'oklch(26% 0.06 240)',
+                  background: msg.role === 'user' ? 'oklch(52% 0.22 250)' : 'oklch(94% 0.015 240)',
+                  borderRadius: msg.role === 'user' ? '12px 12px 3px 12px' : '12px 12px 12px 3px',
+                  padding: '8px 12px',
+                }}>{msg.text}</div>
+              </div>
+            ))}
+            {loading && (
+              <div style={{ alignSelf: 'flex-start' }}>
+                <div style={{
+                  background: 'oklch(94% 0.015 240)',
+                  borderRadius: '12px 12px 12px 3px',
+                  padding: '8px 14px',
+                  display: 'flex', gap: 5, alignItems: 'center',
+                }}>
+                  {[0, 1, 2].map(i => (
+                    <div key={i} style={{
+                      width: 5, height: 5, borderRadius: '50%',
+                      background: 'oklch(66% 0.06 240)',
+                      animation: `chatDot 1s ease-in-out ${i * 0.18}s infinite`,
+                    }} />
+                  ))}
+                </div>
+              </div>
+            )}
+            <div ref={bottomRef} />
+          </div>
+
+          {/* Input */}
+          <div style={{
+            borderTop: '1px solid oklch(91% 0.03 240)',
+            display: 'flex', alignItems: 'center', gap: 0,
+            background: 'oklch(99% 0.004 240)',
+          }}>
+            <input
+              ref={inputRef}
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), send())}
+              disabled={disabled}
+              placeholder={disabled && msgCount >= MSG_CAP ? 'Session limit reached' : 'Ask a question…'}
+              maxLength={300}
+              style={{
+                flex: 1, border: 'none', outline: 'none', background: 'transparent',
+                padding: '11px 14px',
+                fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 12.5,
+                color: 'oklch(26% 0.06 240)',
+              }}
+            />
+            <button
+              onClick={send}
+              disabled={disabled || !input.trim()}
+              style={{
+                background: 'none', border: 'none', cursor: disabled || !input.trim() ? 'default' : 'pointer',
+                padding: '0 14px',
+                color: disabled || !input.trim() ? 'oklch(78% 0.04 240)' : 'oklch(52% 0.22 250)',
+                fontSize: 16, transition: 'color 0.2s',
+              }}
+            >↑</button>
+          </div>
+        </div>
+      )}
+
+      {/* Toggle button */}
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          background: open ? 'oklch(22% 0.08 240)' : 'oklch(99% 0.004 240)',
+          border: '1px solid oklch(88% 0.04 240)',
+          borderRadius: 20,
+          padding: '8px 16px',
+          cursor: 'pointer',
+          display: 'flex', alignItems: 'center', gap: 7,
+          boxShadow: '0 2px 12px oklch(20% 0.05 240 / 0.08)',
+          transition: 'background 0.22s, border-color 0.22s',
+        }}
+        onMouseEnter={e => { if (!open) e.currentTarget.style.borderColor = 'oklch(72% 0.06 240)'; }}
+        onMouseLeave={e => { if (!open) e.currentTarget.style.borderColor = 'oklch(88% 0.04 240)'; }}
+      >
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+          <path d="M14 1H2C1.45 1 1 1.45 1 2v9c0 .55.45 1 1 1h2v3l3.5-3H14c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1z"
+            stroke={open ? 'oklch(88% 0.04 240)' : 'oklch(46% 0.08 240)'} strokeWidth="1.2" fill="none"/>
+        </svg>
+        <span style={{
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10.5,
+          letterSpacing: '0.1em', textTransform: 'uppercase',
+          color: open ? 'oklch(88% 0.04 240)' : 'oklch(46% 0.08 240)',
+        }}>Ask AI</span>
+      </button>
+
+      <style>{`
+        @keyframes chatDot {
+          0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+          30% { transform: translateY(-4px); opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <WheelSite />
+      <ChatWidget />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>
 </html>
