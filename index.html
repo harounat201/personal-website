@@ -4,701 +4,1029 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Harouna Thiam</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Caveat:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
-  <link rel="stylesheet" href="styles.css" />
-  <meta property="og:title" content="Harouna Thiam" />
-  <meta property="og:description" content="CS + AI/ML @ Duke University. SWE Intern @ AWS EKS." />
-  <meta property="og:image" content="https://www.harounathiam.dev/logos-assets/og-image.png" />
-  <meta property="og:url" content="https://www.harounathiam.dev" />
-  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Lora:ital,wght@0,400;0,600;1,400;1,600" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: oklch(98.5% 0.008 240); }
+    @media (max-width: 700px) {
+      html, body { height: auto; overflow: auto; }
+    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    #root { width: 100%; height: 100%; }
+    @keyframes slowSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+<div id="root"></div>
+<script type="text/babel">
 
-  <!-- Grain overlay -->
-  <div class="grain"></div>
+// ─── DATA ─────────────────────────────────────────────────────────────────────
+const NAV_ITEMS = ['About', 'Experience', 'Research', 'Projects', 'Awards', 'News', 'Activities'];
 
-  <!-- Nav -->
-  <nav class="tape-nav">
-    <div class="tape-strip">
-      <span class="nav-icon"><i class="fa-solid fa-terminal"></i></span>
-      <a href="#work">work</a>
-      <a href="#projects">projects</a>
-      <a href="#affiliations">fellowships</a>
-      <a href="#awards">awards</a>
-      <a href="#press">press</a>
-      <a href="#extras">activities</a>
-      <a href="Harouna_Thiam-Resume-.pdf" target="_blank" rel="noopener" class="nav-resume"><i class="fa-solid fa-file-lines"></i> resume</a>
+const NAV_LABELS = {
+  'About': 'About',
+  'Experience': 'Experience',
+  'Research': 'Research',
+  'Projects': 'Projects',
+  'Awards': 'Awards',
+  'News': 'News',
+  'Activities': 'Activities & Fellowships',
+};
+
+const SECTIONS = {
+  About: {
+    items: [
+      {
+        label: 'Biography',
+        headline: 'Harouna Thiam',
+        body: 'Computer Science student at Duke University, passionate about machine learning, distributed systems, and building technology that creates real-world impact.',
+        meta: ['B.Sc. Computer Science — Duke University', 'Class of 2028', 'Durham, North Carolina'],
+      },
+      {
+        label: 'Education',
+        headline: 'Education',
+        body: 'Pursuing a B.Sc. in Computer Science at Duke University with a strong focus on AI/ML, software engineering, and applied research.',
+        meta: ['Duke University', 'B.Sc. Computer Science', 'Expected graduation: 2028'],
+      },
+      {
+        label: 'Contact',
+        headline: 'Get in Touch',
+        body: 'Open to research collaborations, internship opportunities, and conversations about technology, AI, and impact-driven engineering.',
+        meta: ['harouna.thiam@duke.edu', 'github.com/harounathiam', 'linkedin.com/in/harounathiam'],
+      },
+    ],
+  },
+  Experience: {
+    items: [
+      {
+        label: 'Duke Bass',
+        logo: './logos-assets/bass-connections-logo.png',
+        headline: 'ML Research Intern',
+        company: 'Duke University · Bass Connections',
+        date: 'Incoming 2026',
+        body: 'Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.',
+        meta: ['Python, ML/AI, Graph Theory, Game Theory'],
+      },
+      {
+        label: 'AWS EKS',
+        logo: 'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=64',
+        headline: 'Software Development Intern',
+        company: 'Amazon Web Services · EKS',
+        date: 'May – Aug 2026 (Returning)',
+        body: 'Returning internship on the EKS team at Amazon Web Services, focusing on cloud-native Kubernetes infrastructure at scale.',
+        meta: ['Cloud Infrastructure, Kubernetes'],
+      },
+      {
+        label: 'Amazon',
+        logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=64',
+        headline: 'Software Development Intern',
+        company: 'Amazon · Devices (Tablet Launcher)',
+        date: 'May 2025 – Aug 2025',
+        meta: ['Java, TypeScript, AWS Bedrock, Step Functions, Lambda'],
+        bullets: [
+          'Built and owned serverless cloud LLM pipeline using Java and AWS to automate data augmentation and validation for Fire Tablets',
+          'Reduced JSON processing time by 87% by using a distributed parallel map state with AWS Bedrock and AWS Step Functions',
+          'Designed a callback token mechanism with TypeScript SNS listeners and Lambda gateways to synchronize validation responses',
+          'Implemented an Utterance Validation Framework with handoffs to S3 between workflow states to validate Alexa text-to-speech',
+        ],
+      },
+      {
+        label: 'Duke Fuqua',
+        logo: 'https://www.google.com/s2/favicons?domain=duke.edu&sz=64',
+        headline: 'Software Engineer & Course Assistant',
+        company: 'Duke Fuqua School of Business',
+        date: 'Apr 2025 – Mar 2026',
+        meta: ['Python, Openpyxl, Pandas, LMS Integration'],
+        bullets: [
+          'Architected and deployed a proprietary Excel autograder (Python, Openpyxl, Pandas) for 400+ student course at Duke Fuqua',
+          'Decreased grading time for TAs by 42% on average with the deployed software, managing an 8-person TA team',
+          'Integrated generative AI prompts across 150+ pages of textbooks to create AI-assisted instructions for graduate coursework',
+          'Facilitated the integration of a new Learning Management System (LMS) for AI-Enhanced graduate student learning',
+        ],
+      },
+      {
+        label: 'ZSuite',
+        logo: 'https://www.google.com/s2/favicons?domain=zsuite.com&sz=64',
+        headline: 'AI/ML Software Engineer Intern',
+        company: 'ZSuite Technologies',
+        date: 'Jun 2023 – Aug 2023',
+        meta: ['Python, LangChain, Weaviate, RAG, Docker'],
+        bullets: [
+          'Developed LLM chatbot tool with Python and Langchain, resulting in increased efficiency of company representative response',
+          'Curated relevant context to an LLM from CSV files through a vector store with Weaviate and RAG, improving query accuracy',
+          'Containerized code and workspace with Docker and Jupyter Notebooks to create a scalable and modular codebase',
+        ],
+      },
+    ],
+  },
+  Research: {
+    items: [
+      {
+        label: 'Grade Automation',
+        headline: 'Grade Automation for Graduate Coursework (2025)',
+        body: 'Independent study concerning the development and integration of automated grading software into existing graduate course workflows.',
+        meta: ['Independent Study — Aug-Dec 2025', 'Python/Pandas', 'Supervisor: Robert Duvall, Duke University'],
+        link: { label: 'View Architecture Paper', href: './Grade Automation for Graduate Coursework- A Product Overview.pdf' },
+      },
+      {
+        label: 'Publishing',
+        headline: 'Open Access Academic Publishing Using Game Theory and Graph Theory (2026-2027)',
+        body: 'Researching academic publishing dynamics using game theory and graph theory, building AI/ML models to analyze incentive structures across academic networks.',
+        meta: ['Duke Bass Connections — 2026', 'Game Theory, Graph Theory, ML', 'In progress'],
+      },
+    ],
+  },
+  Projects: {
+    items: [
+      {
+        label: 'Chorus',
+        headline: 'Chorus',
+        body: 'iOS app using Delayed Auditory Feedback & choral speech synthesis to improve fluency for people who stutter. Adaptive interface supports both presentation and conversation modes.',
+        meta: ['Swift, AVFoundation, iOS', 'Apple Student Swift Challenge', 'Nov 2025 – Feb 2026'],
+      },
+      {
+        label: 'Odyssey',
+        headline: 'Odyssey: 30 Day Journey',
+        body: 'Mobile sustainability challenge platform using Gemini API to generate personalized daily challenges. Secured 150+ downloads.',
+        meta: ['Flutter, Gemini API, LLMs', '🏆 HackDuke Winner', 'Feb 2025'],
+      },
+      {
+        label: 'GreenGuard',
+        headline: 'Florida GreenGuard AI',
+        body: 'On-device invasive species detection via TensorFlow image classification, with async OpenAI plant descriptions. Optimized for offline use with TF Lite.',
+        meta: ['Kotlin, TensorFlow Lite, OpenAI API', '🏆 1st Place — State of Florida', 'Nov 2023'],
+      },
+      {
+        label: 'LI Voyage',
+        headline: 'LinkedIn Voyage',
+        body: "Revamp of LinkedIn Learning's 'Career Charter' presented to LinkedIn engineers & execs at HQ. Used Gemini + RAG for context-aware course recommendations.",
+        meta: ['Gemini API, RAG, Prompt Engineering', 'Presented @ LinkedIn HQ', 'June 2025'],
+      },
+      {
+        label: 'EduTrade',
+        headline: 'EduTrade',
+        body: 'AI-powered stock options platform for beginners. Personalized questionnaire feeds tailored investment recommendations with visual aids — backed by Firebase and real-time sentiment analysis.',
+        meta: ['Firebase, AI/ML, FinTech', 'PennApps Hackathon 2024', ''],
+      },
+      {
+        label: 'Autograder',
+        headline: 'Excel Autograder',
+        body: 'Multi-assignment Python grading system for graduate Excel coursework. Error-checking heuristics handle varied student submissions at scale; structured debug reports enable transparent scoring.',
+        meta: ['Python, Pandas, Openpyxl', 'Reduced TA grading time 42%', 'Sept 2025'],
+      },
+    ],
+  },
+  Awards: {
+    items: [
+      {
+        label: 'Amazon FE',
+        logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=64',
+        headline: 'Amazon Future Engineer Scholarship',
+        body: 'Competitive scholarship recognizing early-career engineers with high potential in computer science.',
+        meta: ['Amazon', 'One of 400 internationally', 'Scholarships & Grants ($300k+)'],
+      },
+      {
+        label: 'LinkedIn',
+        logo: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=64',
+        headline: 'LinkedIn Possibilities in Tech Scholarship',
+        body: 'Highly selective scholarship with annual skills development alongside LinkedIn executives and the CEO.',
+        meta: ['LinkedIn', 'One of 25 internationally', ''],
+      },
+      {
+        label: 'Jane Street',
+        logo: './logos-assets/janestreet-logo.jpeg',
+        headline: 'Jane Street UNBOXED Scholarship',
+        body: 'One of 38 students selected nationally. Team placed 2nd in the JS UNBOXED Estimathon.',
+        meta: ['Jane Street Capital', '2024', 'One of 38 nationally'],
+      },
+      {
+        label: 'HackDuke',
+        logo: 'https://www.google.com/s2/favicons?domain=duke.edu&sz=64',
+        headline: 'HackDuke Winner — 1st Place',
+        body: 'Won the Sustainability Track at HackDuke for a mobile sustainability challenge platform built with Flutter and Gemini API.',
+        meta: ['Duke University', '2025', 'Sustainability Track'],
+      },
+      {
+        label: 'Congress',
+        logo: 'https://www.google.com/s2/favicons?domain=congressionalappchallenge.us&sz=64',
+        headline: 'U.S. Congressional App Challenge Champion',
+        body: "Built an invasive species detection app using on-device ML; won Florida's Congressional district competition and received formal U.S. Congressional Recognition in Machine Learning.",
+        meta: ['U.S. Congress · FL-16', '1st Place — State of Florida', '2023'],
+      },
+      {
+        label: 'Herald',
+        logo: 'https://www.google.com/s2/favicons?domain=mysuncoast.com&sz=64',
+        headline: 'Golden Herald Award in Technology',
+        body: 'One person recognized among 11 Manatee county high schools for outstanding achievement and leadership in technology.',
+        meta: ['ABC7 · MySuncoast', 'Bradenton, FL', '2024'],
+      },
+      {
+        label: 'Omega Psi Phi',
+        headline: 'Omega Psi Phi Fraternity Scholarship',
+        body: 'Merit scholarship awarded for academic excellence and community impact.',
+        meta: ['Omega Psi Phi Fraternity', '2024', 'Merit Scholarship'],
+      },
+      {
+        label: 'CFSC',
+        headline: 'Academic Scholarship',
+        body: 'Selected among Sarasota high school seniors to receive $3,500 in scholarships for academic excellence.',
+        meta: ['Community Foundation of Sarasota County', '2024', '$3,500'],
+      },
+      {
+        label: 'ASALH',
+        headline: 'Manasota ASALH Scholarship',
+        body: 'Top recipient — $2,000 renewable for two years plus mentorship, awarded among high-achieving Black students in Sarasota and Manatee County.',
+        meta: ['Association for the Study of African American Life and History', '2024', '$2,000 renewable'],
+      },
+    ],
+  },
+  News: {
+    items: [
+      {
+        label: 'AiiCE Pod',
+        headline: 'AiiCE Podcast',
+        body: '"Student Voices: Conversation with Harouna Thiam" — featured on the AiiCE Podcast discussing computing education and career trajectory.',
+        meta: ['AiiCE Podcast', 'Listen now', ''],
+        link: { label: 'Listen on Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/student-voices-conversation-with-harouna-thiam/id1869111742?i=1000761312478' },
+      },
+      {
+        label: 'Congress',
+        headline: 'U.S. Congressional Recognition',
+        body: 'Recognized by U.S. House Rep. Vern Buchanan for applications of Machine Learning in biodiversity conservation.',
+        meta: ['U.S. Congress · FL-16', 'Press Release', ''],
+        link: { label: 'View Congressional App Challenge', href: 'https://www.congressionalappchallenge.us/23-fl16/' },
+      },
+      {
+        label: 'LinkedIn HQ',
+        headline: 'LinkedIn Learning Feature',
+        body: "Presented 'LinkedIn Voyage' — a redesign of LinkedIn Learning's Career Charter using Gemini + RAG — to senior engineers at LinkedIn HQ.",
+        meta: ['LinkedIn Headquarters', 'Possibilities [in] Tech', 'June 2025'],
+      },
+      {
+        label: 'ABC7',
+        headline: 'ABC7 News Coverage',
+        body: 'Featured on ABC7 · MySuncoast for receiving the Golden Herald Award in Computer & Technology.',
+        meta: ['ABC7 · MySuncoast', 'Golden Herald Award', '2024'],
+        link: { label: 'Read Article', href: 'https://www.mysuncoast.com/2024/04/12/47th-annual-golden-herald-awards-honor-manatee-county-students/' },
+      },
+    ],
+  },
+  Activities: {
+    items: [
+      {
+        label: 'Amazon FE',
+        logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=64',
+        headline: 'Amazon Future Engineer Fellow',
+        body: 'Competitive early-career engineering program recognizing students with high potential in CS — one of 400 selected internationally.',
+        meta: ['Amazon', 'One of 400 internationally', 'Fellowship'],
+      },
+      {
+        label: 'LinkedIn',
+        logo: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=64',
+        headline: 'LinkedIn Possibilities [in] Tech',
+        body: 'One of 25 students selected internationally for annual skills development with LinkedIn executives and the CEO, focused on building the next generation of tech leaders.',
+        meta: ['LinkedIn', 'One of 25 internationally', 'Annual cohort'],
+      },
+      {
+        label: 'Jane Street',
+        logo: './logos-assets/janestreet-logo.jpeg',
+        headline: 'Jane Street UNBOXED',
+        body: 'One of 38 students selected nationally. Simulated real-world trading strategies using quantitative finance principles — team placed 2nd in the JS UNBOXED Estimathon.',
+        meta: ['Jane Street Capital', 'NYC — July 2024', '2nd place, Estimathon'],
+      },
+      {
+        label: 'Cornell Tech',
+        logo: './logos-assets/cornell-tech-logo.png',
+        headline: 'Cornell Tech Break Through Tech AI',
+        body: 'AI Fellow building real-world machine learning solutions for industry problem spaces.',
+        meta: ['Cornell Tech', '2026', 'AI Fellowship'],
+      },
+      {
+        label: 'MLT',
+        logo: 'https://www.google.com/s2/favicons?domain=mlt.org&sz=64',
+        headline: 'Management Leadership for Tomorrow',
+        body: "Selected for MLT's 18-month intensive technology mentorship and career development cohort, focused on advancing underrepresented leaders in tech.",
+        meta: ['MLT', '18-month cohort', 'Tech Leadership'],
+      },
+      {
+        label: 'Goldman',
+        logo: './logos-assets/goldmansachs-logo.jpeg',
+        headline: 'Goldman Sachs Engineering Summit',
+        body: 'Selected among the top 13% of applicants for a multi-month intensive program with Goldman Sachs engineers and analysts.',
+        meta: ['Goldman Sachs', 'Dec 2024 – May 2025', 'Top 13% of applicants'],
+      },
+      {
+        label: 'AiiCE',
+        headline: 'AiiCE National Advisory Board',
+        body: 'Advising the Alliance for Innovative and Interdisciplinary Computing Education on expanding access and innovation in CS education nationwide.',
+        meta: ['AiiCE', '2024 – Present', 'National Student Advisory Board'],
+      },
+      {
+        label: 'ColorStack',
+        logo: 'https://www.google.com/s2/favicons?domain=colorstack.org&sz=64',
+        headline: 'ColorStack@Duke',
+        body: 'Community dedicated to increasing the number of Black and Latinx students succeeding in computing and tech careers.',
+        meta: ['Duke University', '2024 – Present', 'Member'],
+      },
+      {
+        label: 'NSBE',
+        logo: 'https://www.google.com/s2/favicons?domain=nsbe.org&sz=64',
+        headline: 'National Society of Black Engineers',
+        body: 'Committed to increasing the number of culturally responsible Black engineers who excel academically, professionally, and in the community.',
+        meta: ['NSBE', '2024 – Present', 'Member'],
+      },
+    ],
+  },
+};
+
+// ─── WHEEL SITE ───────────────────────────────────────────────────────────────
+function WheelSite() {
+  const [activeSection, setActiveSection] = React.useState(null);
+  const [activeItem, setActiveItem] = React.useState(0);
+  const [animating, setAnimating] = React.useState(false);
+
+  const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= 700);
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 700px)');
+    const handler = e => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  // Ring geometry
+  const R = 230;
+  const STROKE = 3;
+  const SIZE = 620;
+  const cx = SIZE / 2;
+  const cy = SIZE / 2;
+  const n = NAV_ITEMS.length;
+  const GAP_DEG = 2.5;
+
+  function selectSection(sec) {
+    if (sec === activeSection) {
+      setActiveSection(null);
+      setActiveItem(0);
+      return;
+    }
+    setAnimating(true);
+    setTimeout(() => {
+      setActiveSection(sec);
+      setActiveItem(0);
+      setAnimating(false);
+    }, 260);
+  }
+
+  function selectItem(idx) {
+    if (idx === activeItem) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActiveItem(idx);
+      setAnimating(false);
+    }, 200);
+  }
+
+  // Build segments
+  const toRad = d => (d * Math.PI) / 180;
+  const segments = NAV_ITEMS.map((label, i) => {
+    const sliceDeg = 360 / n;
+    const startDeg = i * sliceDeg - 90 + GAP_DEG / 2;
+    const endDeg = startDeg + sliceDeg - GAP_DEG;
+    const x1 = cx + R * Math.cos(toRad(startDeg));
+    const y1 = cy + R * Math.sin(toRad(startDeg));
+    const x2 = cx + R * Math.cos(toRad(endDeg));
+    const y2 = cy + R * Math.sin(toRad(endDeg));
+    const large = sliceDeg - GAP_DEG > 180 ? 1 : 0;
+    const midDeg = (startDeg + endDeg) / 2;
+    // Text arc path — slightly outside the ring
+    const LABEL_R = R + 22;
+    const tlx1 = cx + LABEL_R * Math.cos(toRad(startDeg));
+    const tly1 = cy + LABEL_R * Math.sin(toRad(startDeg));
+    const tlx2 = cx + LABEL_R * Math.cos(toRad(endDeg));
+    const tly2 = cy + LABEL_R * Math.sin(toRad(endDeg));
+    const isActive = activeSection === label;
+    const pathId = `arc-label-${i}`;
+    const arcPath = `M ${tlx1} ${tly1} A ${LABEL_R} ${LABEL_R} 0 ${large} 1 ${tlx2} ${tly2}`;
+    return { label, x1, y1, x2, y2, large, midDeg, isActive, pathId, arcPath };
+  });
+
+  const section = activeSection ? SECTIONS[activeSection] : null;
+  const item = section ? section.items[activeItem] : null;
+
+  // Center radius for content area
+  const INNER_R = R - 16;
+  const FULL_SVG = SIZE + 140;
+  const mobileSvgSize = Math.min(window.innerWidth - 16, 400);
+  const mobileScale = mobileSvgSize / FULL_SVG;
+
+  return (
+    <div style={{
+      width: '100%',
+      height: isMobile ? 'auto' : '100vh',
+      minHeight: isMobile ? '100dvh' : 'unset',
+      background: 'oklch(98.8% 0.006 240)',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: isMobile ? 'flex-start' : 'center',
+      position: 'relative',
+      overflow: isMobile ? 'visible' : 'hidden',
+    }}>
+
+      {/* ── Subtle grid ── */}
+      <svg style={{position:'absolute',inset:0,width:'100%',height:'100%',opacity:0.03,pointerEvents:'none'}} xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="g" width="44" height="44" patternUnits="userSpaceOnUse">
+            <path d="M 44 0 L 0 0 0 44" fill="none" stroke="oklch(30% 0.06 240)" strokeWidth="0.6"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#g)"/>
+      </svg>
+
+      {/* ── Top bar ── */}
+      <div style={{
+        position: isMobile ? 'sticky' : 'absolute', top: 0, left: 0, right: 0,
+        height: 56,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 36px',
+        borderBottom: activeSection ? '1px solid oklch(88% 0.04 240)' : '1px solid transparent',
+        transition: 'border-color 0.4s',
+        zIndex: 30,
+        background: 'oklch(98.8% 0.006 240)',
+      }}>
+        {/* Name / logo + résumé */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          {[
+            { label: 'Résumé ↗', href: './Harouna_Thiam-Resume copy.pdf' },
+            { label: 'LinkedIn ↗', href: 'https://www.linkedin.com/in/harounathiam/', grey: true },
+            { label: 'GitHub ↗', href: 'https://github.com/harounat201', grey: true },
+            { label: 'thiamharouna201@gmail.com', href: 'mailto:thiamharouna201@gmail.com', grey: true },
+          ].map(({ label, href, grey }) => (
+            <React.Fragment key={label}>
+              <span style={{ color: 'oklch(80% 0.04 240)', fontSize: 11, lineHeight: 1 }}>·</span>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10.5,
+                  letterSpacing: '0.14em', textTransform: 'uppercase',
+                  color: grey ? 'oklch(65% 0.02 240)' : 'oklch(52% 0.22 250)',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={e => e.currentTarget.style.color = grey ? 'oklch(40% 0.02 240)' : 'oklch(38% 0.24 250)'}
+                onMouseLeave={e => e.currentTarget.style.color = grey ? 'oklch(65% 0.02 240)' : 'oklch(52% 0.22 250)'}
+              >{label}</a>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Section name + close button (right side) */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 14,
+          opacity: activeSection ? 1 : 0,
+          transition: 'opacity 0.35s',
+          pointerEvents: activeSection ? 'auto' : 'none',
+        }}>
+          <div style={{
+            fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 10,
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'oklch(58% 0.05 240)',
+          }}>{activeSection ? NAV_LABELS[activeSection] : ''}</div>
+          <button
+            onClick={() => { setActiveSection(null); setActiveItem(0); }}
+            aria-label="Close section"
+            style={{
+              background: 'oklch(52% 0.22 250)',
+              border: 'none',
+              borderRadius: '50%', width: 22, height: 22,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', color: 'white',
+              fontSize: 14, lineHeight: 1, flexShrink: 0,
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'oklch(42% 0.24 250)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'oklch(52% 0.22 250)'; }}
+          >×</button>
+        </div>
+      </div>
+
+      {/* ── Wheel + center wrapper ── */}
+      <div style={{
+        position: isMobile ? 'relative' : 'absolute',
+        width: isMobile ? mobileSvgSize : FULL_SVG,
+        height: isMobile ? mobileSvgSize : FULL_SVG,
+        flexShrink: 0,
+        marginTop: isMobile ? 12 : 0,
+      }}>
+
+      {/* ── Wheel SVG ── */}
+      <svg
+        width={isMobile ? mobileSvgSize : FULL_SVG}
+        height={isMobile ? mobileSvgSize : FULL_SVG}
+        viewBox={`-70 -70 ${FULL_SVG} ${FULL_SVG}`}
+        style={{
+          position: 'absolute', zIndex: 5,
+          animation: 'slowSpin 129s linear infinite',
+          transformOrigin: 'center center',
+        }}
+      >
+        <defs>
+          {segments.map(({ pathId, arcPath }) => (
+            <path key={pathId} id={pathId} d={arcPath} fill="none"/>
+          ))}
+        </defs>
+
+        {/* Outer ghost ring */}
+        <circle cx={cx} cy={cy} r={R + 50} fill="none" stroke="oklch(86% 0.04 240)" strokeWidth="0.5"/>
+
+        {/* Tick marks */}
+        {Array.from({ length: 72 }, (_, i) => {
+          const angle = (i / 72) * 360 - 90;
+          const rad = angle * Math.PI / 180;
+          const major = i % 6 === 0;
+          const r2 = R + 50;
+          const r1 = r2 + (major ? 7 : 3.5);
+          return (
+            <line key={i}
+              x1={cx + r2 * Math.cos(rad)} y1={cy + r2 * Math.sin(rad)}
+              x2={cx + r1 * Math.cos(rad)} y2={cy + r1 * Math.sin(rad)}
+              stroke="oklch(74% 0.04 240)"
+              strokeWidth={major ? 1 : 0.5}
+              opacity={0.55}
+            />
+          );
+        })}
+
+        {/* Segments */}
+        {segments.map(({ label, x1, y1, x2, y2, large, isActive, pathId }) => (
+          <g key={label} style={{ cursor: 'pointer' }} onClick={() => selectSection(label)}>
+            {/* Invisible wider hit area */}
+            <path
+              d={`M ${x1} ${y1} A ${R} ${R} 0 ${large} 1 ${x2} ${y2}`}
+              fill="none" stroke="transparent" strokeWidth={24}
+            />
+            {/* Visible arc */}
+            <path
+              d={`M ${x1} ${y1} A ${R} ${R} 0 ${large} 1 ${x2} ${y2}`}
+              fill="none"
+              stroke={isActive ? 'oklch(38% 0.14 240)' : 'oklch(74% 0.06 240)'}
+              strokeWidth={isActive ? 5 : STROKE}
+              strokeLinecap="round"
+              style={{ transition: 'stroke 0.3s, stroke-width 0.3s' }}
+            />
+            {/* Curved label along arc */}
+            <text
+              fill={isActive ? 'oklch(22% 0.1 240)' : 'oklch(52% 0.05 240)'}
+              fontSize={10}
+              fontFamily="Plus Jakarta Sans"
+              fontWeight={isActive ? 500 : 300}
+              letterSpacing="3"
+              style={{ userSelect: 'none', transition: 'fill 0.3s' }}
+            >
+              <textPath href={`#${pathId}`} startOffset="50%" textAnchor="middle">
+                {NAV_LABELS[label].toUpperCase()}
+              </textPath>
+            </text>
+          </g>
+        ))}
+
+      </svg>
+
+      {/* ── Center content circle ── */}
+      <div style={{
+        position: 'absolute',
+        top: '50%', left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: isMobile ? INNER_R * 2 * mobileScale : INNER_R * 2,
+        height: isMobile ? INNER_R * 2 * mobileScale : INNER_R * 2,
+        borderRadius: '50%',
+        overflow: 'hidden',
+        zIndex: 10,
+        pointerEvents: 'none',
+      }}>
+        {/* Inner scaler — always desktop size, scaled down on mobile */}
+        <div style={{
+          width: INNER_R * 2, height: INNER_R * 2,
+          position: 'absolute',
+          top: '50%', left: '50%',
+          marginLeft: -INNER_R, marginTop: -INNER_R,
+          transform: isMobile ? `scale(${mobileScale})` : 'none',
+          transformOrigin: 'center center',
+        }}>
+          {/* Default (no section) — always visible on mobile */}
+          <div style={{
+            position: 'absolute', inset: 0, borderRadius: '50%',
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+            padding: '44px',
+            opacity: (isMobile || !activeSection) && !animating ? 1 : 0,
+            transition: 'opacity 0.28s ease',
+          }}>
+            <div style={{
+              fontFamily: 'Lora', fontSize: 32,
+              color: 'oklch(18% 0.04 240)', lineHeight: 1.08, marginBottom: 10,
+            }}>
+              Harouna<br /><em>Thiam</em>
+            </div>
+            <div style={{
+              width: 28, height: 1,
+              background: 'oklch(72% 0.07 240)', margin: '0 auto 12px',
+            }}></div>
+            <div style={{
+              fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 10.5,
+              letterSpacing: '0.2em', textTransform: 'uppercase',
+              color: 'oklch(56% 0.06 240)',
+            }}>Computer Science &amp; AI/ML @ Duke</div>
+            {!isMobile && <div style={{
+              fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 10,
+              color: 'oklch(70% 0.04 240)', marginTop: 16, letterSpacing: '0.06em',
+            }}>Select a section</div>}
+          </div>
+
+          {/* Active item content — desktop only */}
+          {!isMobile && item && (
+            <div style={{
+              position: 'absolute', inset: 0, borderRadius: '50%',
+              display: 'flex', flexDirection: 'column',
+              alignItems: 'center', justifyContent: 'center',
+              padding: '44px',
+              opacity: !animating ? 1 : 0,
+              transition: 'opacity 0.22s ease',
+            }}>
+              <div style={{
+                fontFamily: 'Lora', fontSize: 19, textAlign: 'center',
+                color: 'oklch(20% 0.07 240)', lineHeight: 1.15, marginBottom: 10,
+              }}>{item.headline}</div>
+              {item.bullets ? (
+                <ul style={{
+                  listStyle: 'none', margin: '0 0 14px', padding: 0,
+                  display: 'flex', flexDirection: 'column', gap: 5, width: '100%', textAlign: 'left',
+                }}>
+                  {item.bullets.map(b => (
+                    <li key={b} style={{
+                      fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 12,
+                      color: 'oklch(44% 0.05 240)', lineHeight: 1.55,
+                      paddingLeft: 12, position: 'relative',
+                    }}>
+                      <span style={{ position: 'absolute', left: 0, color: 'oklch(68% 0.06 240)' }}>–</span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div style={{
+                  fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 11,
+                  color: 'oklch(44% 0.05 240)', lineHeight: 1.65, marginBottom: 14,
+                  textWrap: 'pretty',
+                }}>{item.body}</div>
+              )}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: '100%' }}>
+                {item.meta.filter(m => m).map(m => (
+                  <div key={m} style={{
+                    fontFamily: 'Plus Jakarta Sans', fontSize: 10, fontWeight: 400,
+                    letterSpacing: '0.09em', color: 'oklch(40% 0.1 240)',
+                    borderTop: '1px solid oklch(90% 0.02 240)',
+                    paddingTop: 6, textTransform: 'uppercase',
+                  }}>{m}</div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      </div> {/* ── close wheel+center wrapper ── */}
+
+      {/* ── Side navigation panel ── */}
+      <div style={{
+        position: 'absolute',
+        right: 0, top: 0, bottom: 0,
+        width: 248,
+        display: isMobile ? 'none' : 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        overflowY: 'auto',
+        padding: '72px 32px 32px 24px',
+        zIndex: 20,
+        opacity: activeSection ? 1 : 0,
+        transform: activeSection ? 'translateX(0)' : 'translateX(18px)',
+        transition: 'opacity 0.38s ease, transform 0.38s ease',
+        pointerEvents: activeSection ? 'auto' : 'none',
+        background: 'linear-gradient(to left, oklch(98.8% 0.006 240) 55%, transparent)',
+      }}>
+        {/* Section heading */}
+        <div style={{
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9,
+          letterSpacing: '0.26em', textTransform: 'uppercase',
+          color: 'oklch(62% 0.05 240)',
+          marginBottom: 20,
+        }}>{activeSection ? NAV_LABELS[activeSection] : ''}</div>
+
+        {/* Item list / timeline */}
+        {(() => {
+          const isTimeline = activeSection === 'Experience';
+          return (
+            <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
+              {/* Vertical timeline spine */}
+              {isTimeline && (
+                <div style={{
+                  position: 'absolute',
+                  left: 3, top: 12, bottom: 12,
+                  width: 1,
+                  background: 'oklch(88% 0.04 240)',
+                  pointerEvents: 'none',
+                }} />
+              )}
+
+              {section && section.items.map((it, idx) => {
+                const isActive = activeItem === idx;
+                const company = it.company || it.meta[0] || '';
+                const date    = it.date    || it.meta[1] || '';
+                return (
+                  <button
+                    key={it.label}
+                    onClick={() => selectItem(idx)}
+                    style={{
+                      background: 'none', border: 'none', cursor: 'pointer',
+                      textAlign: 'left',
+                      padding: isTimeline ? '10px 0 10px 20px' : '11px 0 11px 12px',
+                      borderTop: '1px solid oklch(90% 0.03 240)',
+                      borderLeft: isTimeline ? 'none' : (isActive
+                        ? '1.5px solid oklch(42% 0.12 240)'
+                        : '1.5px solid transparent'),
+                      display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8,
+                      transition: 'border-color 0.22s ease',
+                      marginLeft: isTimeline ? 0 : -12,
+                      position: 'relative',
+                    }}
+                  >
+                    {/* Timeline dot */}
+                    {isTimeline && (
+                      <div style={{
+                        position: 'absolute',
+                        left: -1, top: '50%',
+                        transform: 'translateY(-50%)',
+                        width: 9, height: 9, borderRadius: '50%',
+                        background: isActive ? 'oklch(52% 0.22 250)' : 'oklch(86% 0.05 240)',
+                        border: '2px solid oklch(98.8% 0.006 240)',
+                        transition: 'background 0.22s ease',
+                        zIndex: 1,
+                      }} />
+                    )}
+
+                    {/* Text column */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: isTimeline ? 2 : 3, flex: 1, minWidth: 0 }}>
+                      {/* Date — top of entry in timeline mode, turns blue when active */}
+                      {isTimeline && date && (
+                        <div style={{
+                          fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9,
+                          letterSpacing: '0.1em', textTransform: 'uppercase',
+                          color: isActive ? 'oklch(52% 0.22 250)' : 'oklch(68% 0.04 240)',
+                          transition: 'color 0.22s ease',
+                        }}>{date}</div>
+                      )}
+
+                      {/* Role / headline */}
+                      <div style={{
+                        fontFamily: 'Lora',
+                        fontStyle: isActive ? 'italic' : 'normal',
+                        fontSize: 13.5, lineHeight: 1.25,
+                        color: isActive ? 'oklch(20% 0.08 240)' : 'oklch(46% 0.05 240)',
+                        transition: 'color 0.22s ease',
+                      }}>{it.headline}</div>
+
+                      {/* Company / org */}
+                      {company && (
+                        <div style={{
+                          fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10.5,
+                          color: isActive ? 'oklch(38% 0.06 240)' : 'oklch(58% 0.04 240)',
+                          transition: 'color 0.22s ease',
+                        }}>{company}</div>
+                      )}
+
+                      {/* Date — non-timeline mode only */}
+                      {!isTimeline && date && (
+                        <div style={{
+                          fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9.5,
+                          letterSpacing: '0.06em', color: 'oklch(66% 0.04 240)',
+                        }}>{date}</div>
+                      )}
+                    </div>
+
+                    {/* Company logo */}
+                    {it.logo && (
+                      <img
+                        src={it.logo}
+                        alt=""
+                        onError={e => { e.currentTarget.style.display = 'none'; }}
+                        style={{
+                          width: 24, height: 24,
+                          objectFit: 'contain',
+                          flexShrink: 0,
+                          borderRadius: 5,
+                          opacity: isActive ? 1 : 0.45,
+                          transition: 'opacity 0.22s ease',
+                        }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          );
+        })()}
+      </div>
+
+      {/* ── Left detail panel ── */}
+      {!isMobile && (
+        <div style={{
+          position: 'absolute',
+          left: 0, top: 0, bottom: 0,
+          width: 260,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          overflowY: 'auto',
+          padding: '72px 24px 32px 32px',
+          zIndex: 20,
+          opacity: item && (item.detail || item.link) ? 1 : 0,
+          transform: item && (item.detail || item.link) ? 'translateX(0)' : 'translateX(-18px)',
+          transition: 'opacity 0.38s ease, transform 0.38s ease',
+          pointerEvents: item && (item.detail || item.link) ? 'auto' : 'none',
+          background: 'linear-gradient(to right, oklch(98.8% 0.006 240) 55%, transparent)',
+        }}>
+          {/* Primary link button */}
+          {item && item.link && (
+            <a
+              href={item.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10.5,
+                letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'white', textDecoration: 'none',
+                background: 'oklch(52% 0.22 250)',
+                borderRadius: 8, padding: '10px 16px',
+                marginBottom: item.detail ? 24 : 0,
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'oklch(42% 0.24 250)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'oklch(52% 0.22 250)'}
+            >{item.link.label} ↗</a>
+          )}
+
+          {/* Supplementary detail entries */}
+          {item && item.detail && (() => {
+            const d = item.detail;
+            return (
+              <>
+                {d.heading && (
+                  <div style={{
+                    fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9,
+                    letterSpacing: '0.26em', textTransform: 'uppercase',
+                    color: 'oklch(62% 0.05 240)',
+                    marginBottom: 20,
+                  }}>{d.heading}</div>
+                )}
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  {d.items && d.items.map((entry, i) => (
+                    <div key={i} style={{
+                      borderTop: '1px solid oklch(90% 0.03 240)',
+                      padding: '11px 0',
+                      display: 'flex', flexDirection: 'column', gap: 4,
+                    }}>
+                      {typeof entry === 'string' ? (
+                        <div style={{
+                          fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 12,
+                          color: 'oklch(44% 0.05 240)', lineHeight: 1.65,
+                        }}>{entry}</div>
+                      ) : (
+                        <>
+                          {entry.label && (
+                            <div style={{
+                              fontFamily: 'Lora', fontSize: 13, lineHeight: 1.25,
+                              color: 'oklch(26% 0.07 240)',
+                            }}>{entry.label}</div>
+                          )}
+                          {entry.text && (
+                            <div style={{
+                              fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 11.5,
+                              color: 'oklch(48% 0.05 240)', lineHeight: 1.65,
+                            }}>{entry.text}</div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+      )}
+
+      {/* ── Mobile: item chip row + content card ── */}
+      {isMobile && activeSection && (
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+
+          {/* Horizontal scrollable chip row */}
+          <div style={{
+            overflowX: 'auto', display: 'flex', gap: 8,
+            padding: '14px 16px',
+            borderTop: '1px solid oklch(90% 0.03 240)',
+            scrollbarWidth: 'none',
+            WebkitOverflowScrolling: 'touch',
+          }}>
+            {section && section.items.map((it, idx) => (
+              <button
+                key={it.label}
+                onClick={() => selectItem(idx)}
+                style={{
+                  flexShrink: 0,
+                  background: activeItem === idx ? 'oklch(22% 0.08 240)' : 'oklch(93% 0.015 240)',
+                  color: activeItem === idx ? 'white' : 'oklch(42% 0.06 240)',
+                  border: 'none', borderRadius: 20, cursor: 'pointer',
+                  fontFamily: 'Plus Jakarta Sans',
+                  fontWeight: activeItem === idx ? 500 : 300,
+                  fontSize: 11, letterSpacing: '0.08em',
+                  padding: '7px 15px',
+                  transition: 'background 0.2s ease, color 0.2s ease',
+                }}
+              >{it.label}</button>
+            ))}
+          </div>
+
+          {/* Item content card */}
+          {item && (
+            <div style={{
+              padding: '20px 20px 48px',
+              opacity: animating ? 0 : 1,
+              transform: animating ? 'translateY(6px)' : 'translateY(0)',
+              transition: 'opacity 0.22s ease, transform 0.22s ease',
+            }}>
+              <div style={{
+                fontFamily: 'Lora', fontSize: 20, lineHeight: 1.2,
+                color: 'oklch(20% 0.07 240)', marginBottom: 10,
+              }}>{item.headline}</div>
+              {item.bullets ? (
+                <ul style={{
+                  listStyle: 'none', margin: '0 0 18px', padding: 0,
+                  display: 'flex', flexDirection: 'column', gap: 8,
+                }}>
+                  {item.bullets.map(b => (
+                    <li key={b} style={{
+                      fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 13,
+                      color: 'oklch(44% 0.05 240)', lineHeight: 1.65,
+                      paddingLeft: 14, position: 'relative',
+                    }}>
+                      <span style={{ position: 'absolute', left: 0, color: 'oklch(62% 0.06 240)' }}>–</span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div style={{
+                  fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 13.5,
+                  color: 'oklch(44% 0.05 240)', lineHeight: 1.72, marginBottom: 18,
+                }}>{item.body}</div>
+              )}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {item.meta.filter(m => m).map(m => (
+                  <div key={m} style={{
+                    fontFamily: 'Plus Jakarta Sans', fontSize: 11, fontWeight: 400,
+                    letterSpacing: '0.09em', color: 'oklch(38% 0.1 240)',
+                    borderTop: '1px solid oklch(90% 0.02 240)',
+                    paddingTop: 8, textTransform: 'uppercase',
+                  }}>{m}</div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ── Bottom name watermark — desktop only ── */}
+      {!isMobile && <div style={{
+        position: 'absolute', bottom: 22, left: '50%',
+        transform: 'translateX(-50%)',
+        fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9,
+        letterSpacing: '0.3em', textTransform: 'uppercase',
+        color: 'oklch(72% 0.04 240)',
+        pointerEvents: 'none',
+      }}>Harouna Thiam · 2026</div>}
+
     </div>
-  </nav>
-
-  <!-- ═══════════════════════ HERO ═══════════════════════ -->
-  <div class="hero-press-wrapper">
-    <canvas id="hero-canvas"></canvas>
-    <div class="coffee-ring ring-1"></div>
-    <div class="coffee-ring ring-2"></div>
-
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <p class="hero-label caveat">CS + AI/ML @ Duke University</p>
-        <h1 class="hero-name">Harouna<br /><em>Thiam.</em></h1>
-        <p class="hero-sub caveat" id="typewriter"></p>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════ PRESS STRIP ═══════════════════════ -->
-    <div class="press-strip" id="press">
-    <div class="press-inner">
-      <h3 class="press-heading">In The News</h3>
-      <div class="press-cards">
-
-        <a class="press-card reveal" href="https://podcasts.apple.com/us/podcast/student-voices-conversation-with-harouna-thiam/id1869111742?i=1000761312478" target="_blank" rel="noopener" style="--prot: -2deg; --delay: 0s">
-          <div class="press-card-img" style="background-image: url('logos-assets/Podcast.png'); background-size: cover; background-position: 20% center;"></div>
-          <div class="press-card-body">
-            <span class="press-card-tag"><i class="fa-solid fa-microphone"></i> AiiCE Podcast</span>
-            <p class="press-card-title">(Podcast Feature) Student Voices: Conversation with Harouna Thiam</p>
-            <span class="press-card-cta caveat">listen now <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </div>
-        </a>
-
-        <a class="press-card reveal" href="https://www.congressionalappchallenge.us/23-fl16/" target="_blank" rel="noopener" style="--prot: 1.5deg; --delay: 0.1s">
-          <div class="press-card-img" style="background-image: url('logos-assets/Hackathon_pic.png'); background-size: cover; background-position: center top; background-color: #fff;"></div>
-          <div class="press-card-body">
-            <span class="press-card-tag"><i class="fa-solid fa-landmark"></i> U.S. Congress</span>
-            <p class="press-card-title">Recognition from U.S. House Rep. Vern Buchanan for applications of Machine Learning in biodiversity · FL&#8209;16</p>
-            <span class="press-card-cta caveat">view press release <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </div>
-        </a>
-
-        <div class="press-card reveal" style="--prot: -1.5deg; --delay: 0.2s">
-          <div class="press-card-img" style="background-image: url('logos-assets/Presentation_pic.jpeg'); background-size: cover; background-position: center 15%;"></div>
-          <div class="press-card-body">
-            <span class="press-card-tag"><i class="fa-brands fa-linkedin"></i> LinkedIn HQ</span>
-            <p class="press-card-title">'LinkedIn Learning' Feature Presentation to Senior Engineers @ LinkedIn · Possibilities [in] Tech</p>
-            <span class="press-card-date caveat">June 2025</span>
-          </div>
-        </div>
-
-        <a class="press-card reveal" href="https://www.mysuncoast.com/2024/04/12/47th-annual-golden-herald-awards-honor-manatee-county-students/" target="_blank" rel="noopener" style="--prot: 2deg; --delay: 0.3s">
-          <div class="press-card-img" style="background-image: url('logos-assets/Award_pic.png'); background-size: cover; background-position: center center;"></div>
-          <div class="press-card-body">
-            <span class="press-card-tag"><i class="fa-solid fa-tv"></i> ABC7 · MySuncoast</span>
-            <p class="press-card-title">ABC7 News · Golden Herald Award in Computer &amp; Technology</p>
-            <span class="press-card-cta caveat">read coverage <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-    <div class="torn-bottom"></div>
-  </div><!-- /.hero-press-wrapper -->
-
-  <!-- ═══════════════════════ WORK ═══════════════════════ -->
-  <section class="section work-section" id="work">
-    <div class="section-header-strip reveal" style="display:flex; align-items:center; justify-content:space-between;">
-      <h2>Work Experience</h2>
-      <a href="Harouna_Thiam-Resume-.pdf" target="_blank" rel="noopener" class="resume-link-inline caveat"><i class="fa-solid fa-file-lines"></i> view résumé</a>
-    </div>
-
-    <div class="exp-container reveal" id="exp-container">
-
-      <!-- Mobile dot indicators -->
-      <div class="exp-dots" id="exp-dots"></div>
-
-      <!-- LEFT: timeline nav -->
-      <nav class="exp-timeline" aria-label="Experience list">
-
-        <div class="exp-timeline-item active" data-target="exp-bass" role="button" tabindex="0">
-          <div class="exp-tl-company">Duke University</div>
-          <div class="exp-tl-role">ML Research Intern</div>
-          <div class="exp-tl-date">Incoming · 2026</div>
-        </div>
-
-        <div class="exp-timeline-item" data-target="exp-eks" role="button" tabindex="0">
-          <div class="exp-tl-company">Amazon Web Services</div>
-          <div class="exp-tl-role">Software Development Intern</div>
-          <div class="exp-tl-date">May – Aug 2026</div>
-        </div>
-
-        <div class="exp-timeline-item" data-target="exp-tablet" role="button" tabindex="0">
-          <div class="exp-tl-company">Amazon — Devices</div>
-          <div class="exp-tl-role">Software Development Intern</div>
-          <div class="exp-tl-date">May – Aug 2025</div>
-        </div>
-
-        <div class="exp-timeline-item" data-target="exp-fuqua" role="button" tabindex="0">
-          <div class="exp-tl-company">Duke Fuqua</div>
-          <div class="exp-tl-role">Software Engineer &amp; Course Assistant</div>
-          <div class="exp-tl-date">Apr 2025 – Present</div>
-        </div>
-
-        <div class="exp-timeline-item" data-target="exp-zsuite" role="button" tabindex="0">
-          <div class="exp-tl-company">ZSuite Technologies</div>
-          <div class="exp-tl-role">AI/ML Software Engineer Intern</div>
-          <div class="exp-tl-date">Jun – Aug 2023</div>
-        </div>
-
-      </nav>
-
-      <!-- RIGHT: detail panels -->
-      <div class="exp-detail">
-
-        <!-- AWS EKS -->
-        <div class="exp-panel" id="exp-eks">
-          <div class="exp-panel-header">
-            <div class="exp-panel-header-left">
-              <div class="exp-panel-eyebrow">Amazon Web Services · Elastic Kubernetes Service</div>
-              <h3 class="exp-panel-role">
-                Software Development Intern
-                <span class="exp-status-badge badge-returning">Returning</span>
-              </h3>
-              <div class="exp-panel-meta">Santa Clara, CA</div>
-            </div>
-            <div class="exp-panel-date-badge">
-              <div class="exp-badge-period">May – Aug 2026</div>
-              <div class="exp-badge-location">Cloud-native Kubernetes</div>
-            </div>
-          </div>
-          <div class="exp-bullets">
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Returning internship on the EKS team, focusing on <strong>cloud-native Kubernetes infrastructure at scale</strong>.</p>
-            </div>
-          </div>
-          <div class="exp-skills">
-          </div>
-        </div>
-
-        <!-- Amazon Devices -->
-        <div class="exp-panel" id="exp-tablet">
-          <div class="exp-panel-header">
-            <div class="exp-panel-header-left">
-              <div class="exp-panel-eyebrow">Amazon · Devices — Fire Tablet Launcher</div>
-              <h3 class="exp-panel-role">Software Development Intern</h3>
-              <div class="exp-panel-meta">Seattle, WA</div>
-            </div>
-            <div class="exp-panel-date-badge">
-              <div class="exp-badge-period">May – Aug 2025</div>
-            </div>
-          </div>
-          <div class="exp-bullets">
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Built a serverless cloud workflow using <strong>Java and AWS Step Functions</strong> to automate JSON data transformation with LLMs — reduced processing time by <strong>87%</strong> via distributed parallel map states with Bedrock.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Designed a callback token mechanism with <strong>TypeScript SNS listeners</strong> and Lambda gateways to synchronize validation responses.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Implemented an Utterance Validation Framework with <strong>S3 handoffs</strong> to validate Alexa text-to-speech across pipeline states.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Ensured code quality with automated testing suites (unit, integration, load) using <strong>JUnit</strong>, integrated into CI/CD.</p>
-            </div>
-          </div>
-          <div class="exp-skills">
-            <span class="exp-skill-chip">Java</span>
-            <span class="exp-skill-chip">TypeScript</span>
-            <span class="exp-skill-chip">AWS Bedrock</span>
-            <span class="exp-skill-chip">AWS Step Functions</span>
-            <span class="exp-skill-chip">AWS Lambda</span>
-            <span class="exp-skill-chip">AWS SNS</span>
-            <span class="exp-skill-chip">S3</span>
-            <span class="exp-skill-chip">JUnit</span>
-            <span class="exp-skill-chip">CI/CD</span>
-          </div>
-        </div>
-
-        <!-- Fuqua -->
-        <div class="exp-panel" id="exp-fuqua">
-          <div class="exp-panel-header">
-            <div class="exp-panel-header-left">
-              <div class="exp-panel-eyebrow">Duke Fuqua School of Business · Technology &amp; Operations</div>
-              <h3 class="exp-panel-role">Software Engineer &amp; Course Assistant</h3>
-              <div class="exp-panel-meta">Durham, NC</div>
-            </div>
-            <div class="exp-panel-date-badge">
-              <div class="exp-badge-period">Apr 2025 – Present</div>
-            </div>
-          </div>
-          <div class="exp-bullets">
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Built and deployed a course autograder using <strong>Python, Pandas, and Openpyxl</strong> — decreased TA grading time by <strong>42%</strong>.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Integrated generative AI prompts across <strong>150+ pages of graduate textbooks</strong> for AI-assisted learning instructions.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Facilitated the integration of a new <strong>LMS</strong> for AI-enhanced graduate student learning.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Overseeing TA team for a course of <strong>400+ students</strong>, delegating grading and coordinating logistics.</p>
-            </div>
-          </div>
-          <div class="exp-skills">
-            <span class="exp-skill-chip">Python</span>
-            <span class="exp-skill-chip">Pandas</span>
-            <span class="exp-skill-chip">Openpyxl</span>
-            <span class="exp-skill-chip">Microsoft Office</span>
-            <span class="exp-skill-chip">Excel</span>
-            <span class="exp-skill-chip">LMS Integration</span>
-          </div>
-        </div>
-
-        <!-- ZSuite -->
-        <div class="exp-panel" id="exp-zsuite">
-          <div class="exp-panel-header">
-            <div class="exp-panel-header-left">
-              <div class="exp-panel-eyebrow">ZSuite Technologies · Platform</div>
-              <h3 class="exp-panel-role">AI/ML Software Engineer Intern</h3>
-              <div class="exp-panel-meta">Remote</div>
-            </div>
-            <div class="exp-panel-date-badge">
-              <div class="exp-badge-period">Jun – Aug 2023</div>
-            </div>
-          </div>
-          <div class="exp-bullets">
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Developed an <strong>LLM chatbot tool</strong> with Python and LangChain, increasing efficiency of company representative response workflows.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Curated relevant context to an LLM from CSV files through a <strong>vector store with Weaviate and RAG</strong>, improving query accuracy.</p>
-            </div>
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Containerized code and workspace with <strong>Docker and Jupyter Notebooks</strong> for a scalable, modular dev environment.</p>
-            </div>
-          </div>
-          <div class="exp-skills">
-            <span class="exp-skill-chip">Python</span>
-            <span class="exp-skill-chip">LangChain</span>
-            <span class="exp-skill-chip">Weaviate</span>
-            <span class="exp-skill-chip">RAG</span>
-            <span class="exp-skill-chip">Docker</span>
-            <span class="exp-skill-chip">LLMs</span>
-          </div>
-        </div>
-
-        <!-- Bass Connections -->
-        <div class="exp-panel active" id="exp-bass">
-          <div class="exp-panel-header">
-            <div class="exp-panel-header-left">
-              <div class="exp-panel-eyebrow">Duke University · Bass Connections</div>
-              <h3 class="exp-panel-role">
-                Machine Learning Research Intern
-                <span class="exp-status-badge badge-incoming">Incoming</span>
-              </h3>
-              <div class="exp-panel-meta">Durham, NC</div>
-            </div>
-            <div class="exp-panel-date-badge">
-              <div class="exp-badge-period">Aug 2026 – 2027</div>
-            </div>
-          </div>
-          <div class="exp-bullets">
-            <div class="exp-bullet">
-              <div class="exp-bullet-dot"></div>
-              <p class="exp-bullet-text">Researching <strong>open-access academic publishing</strong> using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.</p>
-            </div>
-          </div>
-          <div class="exp-skills">
-            <span class="exp-skill-chip">Python</span>
-            <span class="exp-skill-chip">ML / AI</span>
-            <span class="exp-skill-chip">Graph Theory</span>
-            <span class="exp-skill-chip">Game Theory</span>
-            <span class="exp-skill-chip">Research</span>
-          </div>
-        </div>
-
-      </div><!-- /.exp-detail -->
-    </div><!-- /.exp-container -->
-  </section>
-
-  <!-- ═══════════════════════ PROJECTS ═══════════════════════ -->
-  <section class="section projects-section" id="projects">
-    <div class="section-tape section-tape--left caveat">projects</div>
-    <h2 class="projects-heading reveal">Things I've Built</h2>
-    <div class="polaroid-grid">
-
-      <div class="pol-container reveal" style="--rot: -2deg; --delay: 0s">
-        <div class="polaroid">
-          <div class="polaroid-img pol-img--1" style="--tz: 42px; background-image: url('logos-assets/chorus-image.jpg'); background-size: cover; background-position: center;"></div>
-          <div class="polaroid-caption">
-            <p class="caveat pol-title" style="--tz: 28px">Chorus: Delayed Auditory Feedback on iOS to Aid Speech Fluency in People Who Stutter (PWS)</p>
-            <p class="pol-desc" style="--tz: 18px">iOS app using Delayed Auditory Feedback &amp; choral speech synthesis to improve fluency for people who stutter. Adaptive interface supports both presentation and conversation modes.</p>
-            <div class="tag-row" style="--tz: 12px">
-              <span class="tag tag--dark">Swift</span>
-              <span class="tag tag--dark">AVFoundation</span>
-              <span class="tag tag--dark">iOS</span>
-            </div>
-            <span class="pol-award caveat" style="--tz: 36px">Apple Student Swift Challenge · Nov 2025 – Feb 2026</span>
-            <a href="https://github.com/harounat201/project-fluency" target="_blank" rel="noopener" class="pol-github caveat" style="--tz: 8px"><i class="fa-brands fa-github"></i> view on github</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pol-container pol-container--winner reveal" style="--rot: 1.5deg; --delay: 0.1s">
-        <div class="polaroid polaroid--winner">
-          <div class="polaroid-img pol-img--2" style="--tz: 42px; background-image: url('logos-assets/odyssey-logo.png'); background-size: cover; background-position: center;"></div>
-          <div class="polaroid-caption">
-            <p class="caveat pol-title" style="--tz: 28px">Odyssey: 30 Day Journey</p>
-            <p class="pol-desc" style="--tz: 18px">Mobile sustainability challenge platform using Gemini API to generate personalized daily challenges. Secured <strong>150+ downloads</strong>.</p>
-            <div class="tag-row" style="--tz: 12px">
-              <span class="tag tag--dark">Flutter</span>
-              <span class="tag tag--dark">Gemini API</span>
-              <span class="tag tag--dark">LLMs</span>
-            </div>
-            <span class="pol-award caveat" style="--tz: 36px">🏆 HackDuke Winner · Feb 2025</span>
-            <a href="https://github.com/harounat201/odyssey/tree/main" target="_blank" rel="noopener" class="pol-github caveat" style="--tz: 8px"><i class="fa-brands fa-github"></i> view on github</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pol-container pol-container--winner reveal" style="--rot: -1.5deg; --delay: 0.2s">
-        <div class="polaroid polaroid--winner">
-          <div class="polaroid-img pol-img--3" style="--tz: 42px; background-image: url('logos-assets/floridagreenguardai-logo.png'); background-size: cover; background-position: center;"></div>
-          <div class="polaroid-caption">
-            <p class="caveat pol-title" style="--tz: 28px">Florida GreenGuard AI</p>
-            <p class="pol-desc" style="--tz: 18px">On-device invasive species detection via TensorFlow image classification, with async OpenAI plant descriptions. Optimized for <strong>offline use</strong> with TF Lite.</p>
-            <div class="tag-row" style="--tz: 12px">
-              <span class="tag tag--dark">Kotlin</span>
-              <span class="tag tag--dark">TensorFlow Lite</span>
-              <span class="tag tag--dark">OpenAI API</span>
-            </div>
-            <span class="pol-award caveat" style="--tz: 36px">🏆 1st Place Florida · Nov 2023</span>
-            <a href="https://github.com/harounat201/florida-greenguard-ai" target="_blank" rel="noopener" class="pol-github caveat" style="--tz: 8px"><i class="fa-brands fa-github"></i> view on github</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pol-container reveal" style="--rot: 2deg; --delay: 0.3s">
-        <div class="polaroid">
-          <div class="polaroid-img pol-img--4" style="--tz: 42px; background-image: url('logos-assets/linkedinvoyage-logo.png'); background-size: cover; background-position: center;"></div>
-          <div class="polaroid-caption">
-            <p class="caveat pol-title" style="--tz: 28px">LinkedIn Voyage</p>
-            <p class="pol-desc" style="--tz: 18px">Revamp of LinkedIn Learning's 'Career Charter' presented to LinkedIn engineers &amp; execs at HQ. Used Gemini + RAG for context-aware course recommendations.</p>
-            <div class="tag-row" style="--tz: 12px">
-              <span class="tag tag--dark">Gemini API</span>
-              <span class="tag tag--dark">RAG</span>
-              <span class="tag tag--dark">Prompt Engineering</span>
-            </div>
-            <span class="pol-award caveat" style="--tz: 36px">Presented @ LinkedIn HQ · June 2025</span>
-            <a href="https://github.com/harounat201/Possibilities-hack-Voyagers" target="_blank" rel="noopener" class="pol-github caveat" style="--tz: 8px"><i class="fa-brands fa-github"></i> view on github</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pol-container reveal" style="--rot: -1deg; --delay: 0.4s">
-        <div class="polaroid">
-          <div class="polaroid-img pol-img--5" style="--tz: 42px; background-image: url('logos-assets/edutrade-logo.png'); background-size: cover; background-position: center;"></div>
-          <div class="polaroid-caption">
-            <p class="caveat pol-title" style="--tz: 28px">EduTrade</p>
-            <p class="pol-desc" style="--tz: 18px">AI-powered stock options platform for beginners. Personalized questionnaire feeds tailored investment recommendations with visual aids — backed by Firebase auth and real-time sentiment analysis across financial news.</p>
-            <div class="tag-row" style="--tz: 12px">
-              <span class="tag tag--dark">Firebase</span>
-              <span class="tag tag--dark">AI/ML</span>
-              <span class="tag tag--dark">FinTech</span>
-            </div>
-            <span class="pol-award caveat" style="--tz: 36px">PennApps Hackathon · 2024</span>
-            <a href="https://github.com/harounat201/edutrade" target="_blank" rel="noopener" class="pol-github caveat" style="--tz: 8px"><i class="fa-brands fa-github"></i> view on github</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pol-container reveal" style="--rot: 1deg; --delay: 0.5s">
-        <div class="polaroid">
-          <div class="polaroid-img pol-img--6" style="--tz: 42px; background-image: url('logos-assets/msofficeproject-logo.png'); background-size: cover; background-position: center;"></div>
-          <div class="polaroid-caption">
-            <p class="caveat pol-title" style="--tz: 28px">Microsoft Office Excel Autograder</p>
-            <p class="pol-desc" style="--tz: 18px">Multi-assignment Python grading system for graduate Excel coursework. Error-checking heuristics handle varied student submissions at scale; structured debug reports enable transparent scoring.</p>
-            <div class="tag-row" style="--tz: 12px">
-              <span class="tag tag--dark">Python</span>
-              <span class="tag tag--dark">Pandas</span>
-              <span class="tag tag--dark">Openpyxl</span>
-            </div>
-            <span class="pol-award caveat" style="--tz: 36px">Reduced TA grading time 42% · Sept 2025</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ AFFILIATIONS ═══════════════════════ -->
-  <section class="section affiliations-section" id="affiliations">
-    <div class="section-header-strip reveal">
-      <h2>Fellowships &amp; Summits</h2>
-    </div>
-    <p class="affiliations-sub reveal caveat">Selective programs, fellowships, and summits I've been part of.</p>
-
-    <!-- ── Fellowships ── -->
-    <h3 class="affil-subhead reveal caveat">Fellowships</h3>
-    <div class="logo-wall">
-
-      <div class="logo-tile reveal" style="--delay: 0s">
-        <div class="logo-mark logo-aws"><i class="fa-brands fa-aws"></i></div>
-        <p class="logo-name">Amazon Future Engineer</p>
-        <p class="logo-sub caveat">400 students selected internationally</p>
-        <p class="logo-desc">Competitive early-career engineering program recognizing students with high potential in computer science — one of 400 selected internationally.</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.1s">
-        <div class="logo-mark logo-li"><i class="fa-brands fa-linkedin"></i></div>
-        <p class="logo-name">LinkedIn Possibilities [in] Tech</p>
-        <p class="logo-sub caveat">25 selected globally</p>
-        <p class="logo-desc">One of 25 students selected internationally for an annual skills development program with LinkedIn executives and the CEO, focused on building the next generation of tech leaders.</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.2s">
-        <div class="logo-mark logo-js"><img src="logos-assets/janestreet-logo.jpeg" alt="Jane Street" class="logo-real-img" /></div>
-        <p class="logo-name">Jane Street</p>
-        <p class="logo-sub caveat">UNBOXED · 38 selected</p>
-        <p class="logo-desc">One of 38 students selected nationally. Simulated real-world trading strategies using quantitative finance principles — team placed 2nd in the JS UNBOXED Estimathon (July 2024, NYC).</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.3s">
-        <div class="logo-mark logo-cornell"><img src="logos-assets/cornell-tech-logo.png" alt="Cornell Tech" class="logo-real-img" /></div>
-        <p class="logo-name">Cornell Tech</p>
-        <p class="logo-sub caveat">Break Through Tech AI · 2026</p>
-        <p class="logo-desc">AI Fellow in Cornell Tech's Break Through Tech AI program, building real-world machine learning solutions for industry problem spaces (2026).</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.4s">
-        <div class="logo-mark logo-bass"><img src="logos-assets/bass-connections-logo.png" alt="Bass Connections" class="logo-real-img" /></div>
-        <p class="logo-name">Bass Connections</p>
-        <p class="logo-sub caveat">Duke University · 2026–2027</p>
-        <p class="logo-desc">Duke research initiative on open-access academic publishing using game theory and graph theory — building AI/ML tools to analyze publishing dynamics across academic networks.</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.5s">
-        <div class="logo-mark logo-mlt"><span class="logo-letter">MLT</span></div>
-        <p class="logo-name">MLT</p>
-        <p class="logo-sub caveat">18-month tech mentorship</p>
-        <p class="logo-desc">Selected for Management Leadership for Tomorrow's 18-month intensive technology mentorship and career development cohort, focused on advancing underrepresented leaders in tech.</p>
-      </div>
-
-    </div>
-
-    <!-- ── Summits ── -->
-    <h3 class="affil-subhead reveal caveat">Summits</h3>
-    <div class="logo-wall logo-wall--summits">
-
-      <div class="logo-tile reveal" style="--delay: 0s">
-        <div class="logo-mark logo-gs"><img src="logos-assets/goldmansachs-logo.jpeg" alt="Goldman Sachs" class="logo-real-img" /></div>
-        <p class="logo-name">Goldman Sachs</p>
-        <p class="logo-sub caveat">Engineering Summit · Top 13%</p>
-        <p class="logo-desc">Selected among the top 13% of applicants for a multi-month intensive program with world-class Goldman Sachs engineers and analysts (Dec 2024 – May 2025).</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.14s">
-        <div class="logo-mark logo-deshaw"><img src="logos-assets/deshaw-logo.jpeg" alt="D.E. Shaw" class="logo-real-img" /></div>
-        <p class="logo-name">D.E. Shaw</p>
-        <p class="logo-sub caveat">Connect · NYC</p>
-        <p class="logo-desc">Invited to D.E. Shaw's NYC headquarters to connect with engineers and business executives at one of the world's most quantitative and technologically sophisticated firms.</p>
-      </div>
-
-      <div class="logo-tile reveal" style="--delay: 0.28s">
-        <div class="logo-mark logo-walmart-img">
-          <img src="logos-assets/walmart-logo.png" alt="Walmart" class="logo-real-img" />
-        </div>
-        <p class="logo-name">Walmart</p>
-        <p class="logo-sub caveat">Technology Summit</p>
-        <p class="logo-desc">One of ~100 selected tech students invited to explore Walmart's technology headquarters and connect with engineering and product leaders across the organization.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ AWARDS ═══════════════════════ -->
-  <section class="section awards-section" id="awards">
-    <div class="awards-grid">
-
-      <!-- Scholarships -->
-      <div class="awards-paper reveal" style="--delay: 0s">
-        <div class="stamp-corner">$</div>
-        <h2 class="section-title">Scholarships & Grants ($300k+ earned)</h2>
-        <ul class="awards-list">
-
-          <li class="award-item reveal" style="--delay: 0.06s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>Amazon Future Engineer Scholarship</strong>
-              <span class="award-meta caveat">Amazon · One of 400 students internationally</span>
-              <p>Competitive scholarship recognizing early-career engineers with high potential in computer science.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.12s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>LinkedIn Possibilities in Tech Scholarship</strong>
-              <span class="award-meta caveat">LinkedIn · One of 25 students internationally</span>
-              <p>Highly selective scholarship with annual skills development alongside LinkedIn executives and the CEO.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.18s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>Jane Street UNBOXED Scholarship</strong>
-              <span class="award-meta caveat">2024 · Jane Street Capital</span>
-              <p>One of 38 students selected nationally for the UNBOXED program. Team placed 2nd in the JS UNBOXED Estimathon.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.24s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>Omega Psi Phi Fraternity Scholarship</strong>
-              <span class="award-meta caveat">Omega Psi Phi Fraternity</span>
-              <p>Merit scholarship awarded for academic excellence and community impact.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.30s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>Academic Scholarship</strong>
-              <span class="award-meta caveat">2024 · Community Foundation of Sarasota County</span>
-              <p>Selected among Sarasota high school seniors to receive $3,500 in scholarships for academic excellence.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.36s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>Manasota ASALH Scholarship</strong>
-              <span class="award-meta caveat">Association for the Study of African American Life and History</span>
-              <p>Top recipient — $2,000 renewable for two years plus mentorship, awarded among high-achieving Black students in Sarasota and Manatee County.</p>
-            </div>
-          </li>
-
-        </ul>
-      </div>
-
-      <!-- Hackathon Wins & Distinctions -->
-      <div class="awards-paper reveal" style="--delay: 0.1s">
-        <div class="stamp-corner">★</div>
-        <h2 class="section-title">Wins &amp; Distinctions</h2>
-        <ul class="awards-list">
-
-          <li class="award-item reveal" style="--delay: 0.16s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>HackDuke Winner — 1st Place</strong>
-              <span class="award-meta caveat">2025 · Duke University</span>
-              <p>Won the Sustainability Track at HackDuke for a mobile sustainability challenge platform built with Flutter and Gemini API.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.22s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>U.S. Congressional App Challenge Champion &amp; Recognition in ML</strong>
-              <span class="award-meta caveat">2023 · 1st Place, State of Florida · United States Congress</span>
-              <p>Built an invasive species detection app using on-device ML; won Florida's Congressional district competition and received formal U.S. Congressional Recognition in Machine Learning.</p>
-            </div>
-          </li>
-
-          <li class="award-item reveal" style="--delay: 0.28s">
-            <span class="award-icon">◈</span>
-            <div>
-              <strong>Bradenton Golden Herald Award in Technology</strong>
-              <span class="award-meta caveat">2024</span>
-              <p>One person recognized among 11 Manatee county high schools for outstanding achievement and leadership in technology.</p>
-            </div>
-          </li>
-
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ EXTRACURRICULARS ═══════════════════════ -->
-  <section class="section extras-section" id="extras">
-    <h2 class="extras-heading reveal">On Campus &amp; Beyond</h2>
-    <div class="notes-grid">
-
-      <div class="sticky-note reveal" style="--note-color: #f0d9a0; --rot: -1.5deg; --delay: 0s">
-        <p class="caveat note-org">AiiCE</p>
-        <p class="note-role">National Student Advisory Board · 2024–Present</p>
-        <p class="note-desc">Alliance for Innovative and Interdisciplinary Computing Education — advising on expanding access and innovation in CS education nationwide.</p>
-      </div>
-
-      <div class="sticky-note reveal" style="--note-color: #e8c99a; --rot: 1deg; --delay: 0.1s">
-        <p class="caveat note-org">ColorStack@Duke</p>
-        <p class="note-role">Member · 2024–Present</p>
-        <p class="note-desc">Community dedicated to increasing the number of Black and Latinx students succeeding in computing and tech careers.</p>
-      </div>
-
-      <div class="sticky-note reveal" style="--note-color: #ddb88a; --rot: -0.5deg; --delay: 0.2s">
-        <p class="caveat note-org">NSBE</p>
-        <p class="note-role">Member · 2024–Present</p>
-        <p class="note-desc">National Society of Black Engineers — committed to increasing the number of culturally responsible Black engineers who excel academically.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="caveat footer-name">Harouna Thiam</p>
-      <p class="footer-tagline">I'm always open to connecting about internships, research, collaborations, or just talking tech.</p>
-      <div class="footer-links">
-        <a href="mailto:thiamharouna201@gmail.com"><i class="fa-solid fa-envelope"></i> email</a>
-        <span>·</span>
-        <a href="https://github.com/harounat201" target="_blank"><i class="fa-brands fa-github"></i> github</a>
-        <span>·</span>
-        <a href="https://linkedin.com/in/harounathiam" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin</a>
-      </div>
-      <p class="footer-credit caveat">brewed with ☕ in Durham, NC</p>
-    </div>
-  </footer>
-
-  <!-- ── Chat Widget ── -->
-  <div id="chat-widget" aria-label="Chat with Harouna's assistant">
-    <button id="chat-toggle" aria-label="Open chat">
-      <i class="fa-solid fa-comment-dots chat-icon-open"></i>
-      <span class="chat-label">AI assistant - Ask me anything</span>
-      <i class="fa-solid fa-xmark chat-icon-close"></i>
-    </button>
-
-    <div id="chat-panel" role="dialog" aria-label="Chat panel" hidden>
-      <div id="chat-header">
-        <span class="caveat chat-title">Ask about Harouna</span>
-      </div>
-      <div id="chat-messages">
-        <div class="chat-msg chat-msg--bot">
-          <p>Hey! I'm Harouna's AI assistant. Ask me anything about his experience, projects, or background.</p>
-        </div>
-      </div>
-      <div id="chat-suggestions">
-        <button class="suggestion-chip" type="button">What's something fun about Harouna?</button>
-        <button class="suggestion-chip" type="button">What's Harouna's experience with AWS technologies?</button>
-      </div>
-      <form id="chat-form" autocomplete="off">
-        <input id="chat-input" type="text" placeholder="Ask a question…" maxlength="300" />
-        <button type="submit" aria-label="Send">
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<WheelSite />);
+</script>
 </body>
 </html>
