@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Harouna Thiam</title>
+  <meta property="og:title" content="Harouna Thiam" />
+  <meta property="og:description" content="CS + AI/ML @ Duke University" />
+  <meta property="og:url" content="https://www.harounathiam.dev/" />
+  <meta property="og:image" content="https://www.harounathiam.dev/website-image-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.harounathiam.dev/website-image-preview.png" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Lora:ital,wght@0,400;0,600;1,400;1,600" rel="stylesheet" />
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -12,7 +20,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: oklch(98.5% 0.008 240); }
     @media (max-width: 700px) {
-      html, body { height: auto; overflow: auto; }
+      html, body { height: auto; overflow-x: hidden; overflow-y: auto; }
     }
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     #root { width: 100%; height: 100%; }
@@ -450,24 +458,27 @@ function WheelSite() {
       {/* ── Top bar ── */}
       <div style={{
         position: isMobile ? 'sticky' : 'absolute', top: 0, left: 0, right: 0,
-        height: 56,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 36px',
+        height: isMobile ? 'auto' : 56,
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        alignItems: isMobile ? 'stretch' : 'center',
+        justifyContent: isMobile ? 'flex-start' : 'space-between',
+        padding: isMobile ? '8px 16px' : '0 36px',
+        gap: isMobile ? 0 : 0,
         borderBottom: activeSection ? '1px solid oklch(88% 0.04 240)' : '1px solid transparent',
         transition: 'border-color 0.4s',
         zIndex: 30,
         background: 'oklch(98.8% 0.006 240)',
       }}>
-        {/* Name / logo + résumé */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        {/* Links row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 10 : 14, flexWrap: 'nowrap', padding: isMobile ? '4px 0' : 0 }}>
           {[
             { label: 'Résumé ↗', href: './Harouna_Thiam-Resume copy.pdf' },
             { label: 'LinkedIn ↗', href: 'https://www.linkedin.com/in/harounathiam/', grey: true },
             { label: 'GitHub ↗', href: 'https://github.com/harounat201', grey: true },
-            { label: 'thiamharouna201@gmail.com', href: 'mailto:thiamharouna201@gmail.com', grey: true },
-          ].map(({ label, href, grey }) => (
+          ].map(({ label, href, grey }, i) => (
             <React.Fragment key={label}>
-              <span style={{ color: 'oklch(80% 0.04 240)', fontSize: 11, lineHeight: 1 }}>·</span>
+              {i > 0 && <span style={{ color: 'oklch(80% 0.04 240)', fontSize: 11, lineHeight: 1, flexShrink: 0 }}>·</span>}
               <a
                 href={href}
                 target="_blank"
@@ -478,41 +489,13 @@ function WheelSite() {
                   color: grey ? 'oklch(65% 0.02 240)' : 'oklch(52% 0.22 250)',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
+                  flexShrink: 0,
                 }}
                 onMouseEnter={e => e.currentTarget.style.color = grey ? 'oklch(40% 0.02 240)' : 'oklch(38% 0.24 250)'}
                 onMouseLeave={e => e.currentTarget.style.color = grey ? 'oklch(65% 0.02 240)' : 'oklch(52% 0.22 250)'}
               >{label}</a>
             </React.Fragment>
           ))}
-        </div>
-
-        {/* Section name + close button (right side) */}
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 14,
-          opacity: activeSection ? 1 : 0,
-          transition: 'opacity 0.35s',
-          pointerEvents: activeSection ? 'auto' : 'none',
-        }}>
-          <div style={{
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 10,
-            letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: 'oklch(58% 0.05 240)',
-          }}>{activeSection ? NAV_LABELS[activeSection] : ''}</div>
-          <button
-            onClick={() => { setActiveSection(null); setActiveItem(0); }}
-            aria-label="Close section"
-            style={{
-              background: 'oklch(52% 0.22 250)',
-              border: 'none',
-              borderRadius: '50%', width: 22, height: 22,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer', color: 'white',
-              fontSize: 14, lineHeight: 1, flexShrink: 0,
-              transition: 'background 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'oklch(42% 0.24 250)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'oklch(52% 0.22 250)'; }}
-          >×</button>
         </div>
       </div>
 
@@ -720,13 +703,27 @@ function WheelSite() {
         pointerEvents: activeSection ? 'auto' : 'none',
         background: 'linear-gradient(to left, oklch(98.8% 0.006 240) 55%, transparent)',
       }}>
-        {/* Section heading */}
-        <div style={{
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9,
-          letterSpacing: '0.26em', textTransform: 'uppercase',
-          color: 'oklch(62% 0.05 240)',
-          marginBottom: 20,
-        }}>{activeSection ? NAV_LABELS[activeSection] : ''}</div>
+        {/* Close button + section heading */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+          <button
+            onClick={() => { setActiveSection(null); setActiveItem(0); }}
+            aria-label="Close section"
+            style={{
+              background: 'oklch(52% 0.22 250)', border: 'none',
+              borderRadius: '50%', width: 22, height: 22,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', color: 'white',
+              fontSize: 14, lineHeight: 1, flexShrink: 0, transition: 'background 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'oklch(42% 0.24 250)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'oklch(52% 0.22 250)'; }}
+          >×</button>
+          <div style={{
+            fontFamily: 'Plus Jakarta Sans', fontWeight: 300, fontSize: 9,
+            letterSpacing: '0.26em', textTransform: 'uppercase',
+            color: 'oklch(62% 0.05 240)',
+          }}>{activeSection ? NAV_LABELS[activeSection] : ''}</div>
+        </div>
 
         {/* Item list / timeline */}
         {(() => {
@@ -936,14 +933,29 @@ function WheelSite() {
       {isMobile && activeSection && (
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
 
-          {/* Horizontal scrollable chip row */}
+          {/* Horizontal scrollable chip row with close button */}
           <div style={{
             overflowX: 'auto', display: 'flex', gap: 8,
             padding: '14px 16px',
             borderTop: '1px solid oklch(90% 0.03 240)',
             scrollbarWidth: 'none',
             WebkitOverflowScrolling: 'touch',
+            alignItems: 'center',
           }}>
+            <button
+              onClick={() => { setActiveSection(null); setActiveItem(0); }}
+              aria-label="Close section"
+              style={{
+                flexShrink: 0,
+                background: 'oklch(52% 0.22 250)', border: 'none',
+                borderRadius: '50%', width: 26, height: 26,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', color: 'white',
+                fontSize: 15, lineHeight: 1, transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'oklch(42% 0.24 250)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'oklch(52% 0.22 250)'; }}
+            >×</button>
             {section && section.items.map((it, idx) => (
               <button
                 key={it.label}
@@ -971,6 +983,24 @@ function WheelSite() {
               transform: animating ? 'translateY(6px)' : 'translateY(0)',
               transition: 'opacity 0.22s ease, transform 0.22s ease',
             }}>
+              {item.link && (
+                <a
+                  href={item.link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10.5,
+                    letterSpacing: '0.1em', textTransform: 'uppercase',
+                    color: 'white', background: 'oklch(52% 0.22 250)',
+                    borderRadius: 6, padding: '7px 14px',
+                    textDecoration: 'none', marginBottom: 14,
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'oklch(42% 0.24 250)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'oklch(52% 0.22 250)'}
+                >{item.link.label} ↗</a>
+              )}
               <div style={{
                 fontFamily: 'Lora', fontSize: 20, lineHeight: 1.2,
                 color: 'oklch(20% 0.07 240)', marginBottom: 10,
