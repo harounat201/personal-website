@@ -14,12 +14,12 @@ GitHub: github.com/harounat201
 Phone: +1 813-585-2175
 
 One-liner bio:
-Sophomore CS + AI/ML student at Duke University building at the intersection of cloud infrastructure, AI systems, and impactful software. Returning intern at Amazon Web Services (EKS), previous intern at Amazon Devices, and recognized nationally for technical excellence.
+Junior CS + AI/ML student at Duke University building at the intersection of cloud infrastructure, AI systems, and impactful software. Two-time Amazon intern (AWS EKS and Amazon Devices), undergraduate researcher at Duke Systems Group, and recognized nationally for technical excellence.
 
 --- ABOUT ME ---
-I'm a sophomore at Duke University pursuing a B.S. in Computer Science with a concentration in Artificial Intelligence and Machine Learning (expected May 2028). I'm passionate about cloud infrastructure, distributed systems, and AI-driven applications.
+I'm a junior at Duke University pursuing a B.S. in Computer Science with a concentration in Artificial Intelligence and Machine Learning (expected May 2028). I'm passionate about cloud infrastructure, distributed systems, and AI-driven applications.
 
-I've interned at Amazon twice — first on the Fire Tablet Launcher team in Devices (Summer 2025), and now returning to AWS on the Elastic Kubernetes Service (EKS) team (starting May 2026). I also support graduate-level education at Duke's Fuqua School of Business as a Technical Coordinator & Grader, and conduct research on open-access academic publishing through Duke's Bass Connections program.
+I've interned at Amazon twice — first on the Fire Tablet Launcher team in Devices (Summer 2025), then on AWS's Elastic Kubernetes Service (EKS) team (Summer 2026). I also supported graduate-level education at Duke's Fuqua School of Business as a Technical Coordinator & Grader, and now do undergraduate research at Duke Systems Group on transparent GPU utilization sharing under Dr. Matthew Lentz.
 
 Outside of work, I'm an African college student from Tampa, FL with West African roots (Senegalese/Mauritanian/Malian). I'm active in ColorStack@Duke, NSBE, and the AiiCE National Student Advisory Board. I enjoy going on runs/walks, hitting the gym, gaming, watching films/anime. 
 - Favorite video games: Dark Souls, Elden Ring (400+ hours combined)
@@ -36,18 +36,24 @@ Expected Graduation: May 2028
 Relevant Coursework: Data Structures & Algorithms, Computer Systems, Discrete Mathematics, Probability, Distributed Systems, Linear Algebra
 
 --- SKILLS ---
-Languages: Python, Java, React, SQL, Kotlin, TypeScript/JavaScript, R, Swift, Go
-Infrastructure: AWS (Lambda, S3, Bedrock, SNS, Step Functions, EKS), Docker, Git, CI/CD, GitHub Actions, REST APIs, Distributed Systems, Firebase, Kubernetes
-AI/ML/Data: LangChain, Vectorstores, Pandas, NumPy, TensorFlow, TensorFlow Lite, Prompt Engineering, RAG, Weaviate, Codex, Gemini API, Claude API, Cursor
+Languages: Go, Python, Java, TypeScript, R, HTML, CSS, SQL, C
+Infrastructure: AWS (Lambda, S3, Bedrock, SNS, DynamoDB, EKS), Docker, git, CI/CD, REST, Kubernetes, JUnit, MySQL, kind
+AI/ML/Data: LangChain, Weaviate, Pandas, Prompt Engineering, NumPy, Tensorflow, Codex, Claude Code, Cursor
 
 --- EXPERIENCE ---
 
 [1] Amazon Web Services (AWS)
 Role: Software Development Engineer Intern (Returning)
 Team: Elastic Kubernetes Service (EKS)
-Dates: May 2026 – Present
+Dates: May 2026 – Aug 2026
 Location: Santa Clara, CA
-Details: Returning internship on the EKS team, focusing on cloud-native Kubernetes infrastructure at scale. DID NOT HAVE THIS EXPERIENCE YET. NO APPLICABLE EXPERIENCE.
+
+Resume Bullets:
+- Architected a highly-available notification scheduler in Go that monitors cert. authority changes in 600k+ Kubernetes clusters
+- Deployed serverless architecture to route expiry messages with AWS (Lambda, EB) to mitigate TLS failure in 9,900+ companies
+- Developed a serverless async reconciliation loop to redrive failures in a state machine, achieving 99% message send rates
+- Implemented an atomic transaction model for writes to DynamoDB, preventing desyncs between CA operations and notifications
+- Wired notification coverage for all AWS partitions, implementing DNS lookup for on-deployment endpoint building & integrations
 
 [2] Amazon
 Role: Software Development Engineer Intern
@@ -97,7 +103,14 @@ Resume Bullets:
 - Implemented an Utterance Validation Framework with S3 handoffs between workflow states to validate Alexa text-to-speech
 - Ensured code quality with automated testing suites (unit, integration, load) using JUnit, integrated into a CI/CD pipeline
 
-[3] Duke University — Fuqua School of Business
+[3] Duke University — Bass Connections
+Role: ML Research Intern
+Project: Open Access Academic Publishing Using Game Theory and Graph Theory (2026–2027)
+Dates: March 2026 – Present
+Location: Durham, NC
+Details: Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.
+
+[4] Duke University — Fuqua School of Business
 Role: Technical Coordinator & Grader (Head Grader & Software Engineer)
 Courses: DECISION 616 (Software Tools for Analytics), DECISION 523Q (Fraud Analytics)
 Dates: April 2025 – Present
@@ -108,31 +121,33 @@ Details:
 - Facilitated integration of a new Learning Management System (LMS) for AI-enhanced graduate education
 - Managing a team of Graduate TAs; overseeing a 400+ student course and delegating assignment grading
 
-[4] Duke University — Bass Connections
-Role: Software & AI Research Intern
-Project: Open Access Academic Publishing Using Game Theory and Graph Theory (2026–2027)
-Dates: March 2026 – Present
+[5] Duke Systems Group
+Role: Undergraduate Researcher
+Dates: Sept 2026 – Current
 Location: Durham, NC
+Details:
+- Investigating transparent GPU utilization sharing in Duke Compute Cluster (DCC) GPU partitions under Dr. Matthew Lentz
+- Utilizing CPU preprofiling to simulate job memory usage (CUDACachingAllocator) to determine job placement in GPU clusters
 
-[5] Cornell Tech — Break Through Tech AI Program
+[6] Cornell Tech — Break Through Tech AI Program
 Role: AI Fellow
 Dates: March 2026 – Present
 Details: Building real-world AI/ML solutions for industry problem spaces. Program description: Machine Learning Foundations Curriculum: Work with industry-relevant tools over the summer to analyze real-world data sets and identify patterns and relationships to create robust data science projects.
 AI Studio and Portfolio Development: Tackle real-world ML Challenge Projects in the Fall and Spring AI Studio to develop your professional portfolio with the guidance of academic and industry advisors.   
 Mentorship and Career Coaching: To support your professional goals, you will work closely with an industry mentor in a small group throughout the course of the program to engage in case studies and skill-building simulations with personalized feedback.
 
-[6] Goldman Sachs
+[7] Goldman Sachs
 Role: Engineering Summit Fellow
 Dates: December 2024 – May 2025
 Details: Selected among the top 13% of applicants for a multi-month intensive program with Goldman Sachs engineers and analysts.
 
-[7] Jane Street
+[8] Jane Street
 Role: Software Engineering Fellow — UNBOXED Program
 Dates: July 2024
 Location: New York, NY
 Details: One of 38 students selected nationally. Simulated real-world trading strategies using quantitative finance principles; team placed 2nd in the JS UNBOXED Estimathon.
 
-[8] ZSuite Technologies
+[9] ZSuite Technologies
 Role: AI/ML Software Engineer Intern
 Dates: June 2023 – August 2023
 Details:
@@ -142,28 +157,36 @@ Details:
 
 --- PROJECTS ---
 
-[1] HackDuke 'Code for Good' (Odyssey: 30 Day Journey) — 1st Place (Sustainability Track)
+[1] Reaper: Kubernetes Controller for Automatic Gang Protection in ML Training Clusters
+Date: May 2026
+Stack: Go, Kubernetes, EKS, Karpenter, kind
+- Built a Kubernetes controller in Go automating GPU node lifecycles, automating cluster state changes with reconciler for EKS
+- Designed an anti-disruption policy layer to automatically protect GPU node gang schedules from deprovisionment on Karpenter
+- Validated end-to-end against a multi-node kind cluster with simulated GPU node pools and distributed training job manifests
+- Designed first-fit bin-packing logic to detect consolidation candidates, flagging underutilized GPU nodes for Karpenter rightsizing
+
+[2] HackDuke 'Code for Good' (Odyssey: 30 Day Journey) — 1st Place (Sustainability Track)
 Date: February 2025
 Stack: Flutter, Gemini API, LLMs
 - Built a full mobile app at HackDuke for an interactive daily sustainability challenge platform
 - Used Gemini API to dynamically generate personalized challenges and gamify user progress
 - Applied game design and UI/UX principles; secured 150+ downloads
 
-[2] U.S. Congressional App Challenge (Florida GreenGuard AI) — 1st Place, Florida
+[3] U.S. Congressional App Challenge (Florida GreenGuard AI) — 1st Place, Florida
 Date: November 2023
 Stack: Kotlin, TensorFlow, TensorFlow Lite, OpenAI API
 - Built a mobile app to detect invasive plant species using on-device TensorFlow image classification
 - Integrated OpenAI API via Kotlin coroutines for dynamic, async plant descriptions
 - Optimized for offline use with TensorFlow Lite for on-device inference with low latency
 
-[3] LinkedIn Voyage — LinkedIn Learning Feature Revamp
+[4] LinkedIn Voyage — LinkedIn Learning Feature Revamp
 Date: June 2025
 Stack: Google Gemini API, RAG, Prompt Engineering
 - Designed and presented a revamp of LinkedIn Learning's 'Career Charter' feature to LinkedIn engineers and executives at HQ
 - Used Gemini API and RAG for dynamic, chronological, context-aware course recommendations
 - Prototyped a semantic retrieval and prompt engineering workflow to personalize learning paths
 
-[4] Chorus - Delayed Auditory Feedback on iOS to Aid Speech Fluency in People Who Stutter (PWS)
+[5] Chorus - Delayed Auditory Feedback on iOS to Aid Speech Fluency in People Who Stutter (PWS)
 Date: Nov 2025 – Feb 2026
 Stack: iOS, Swift, Swift UI, AVFoundation
 - iOS speech-support application that leverages Delayed Auditory Feedback (DAF) and Text-to-Speech choral speech to help people who stutter improve fluency during conversations and presentations.
@@ -183,7 +206,7 @@ Stack: iOS, Swift, Swift UI, AVFoundation
 --- PROFESSIONAL DEVELOPMENT ---
 - Amazon Future Engineer — 400 students internationally, early career engineering program
 - LinkedIn Possibilities in Tech — 25 students internationally, annual skills development with LinkedIn execs/CEO
-- Walmart Technology Summit — ~100 selected tech students, explored Walmart HQ
+- Walmart Global Tech SWE Fellow — <1.5% of applicants selected, tech track at Walmart HQ in Bentonville, AR
 - Goldman Sachs Engineering Summit — 13% selection rate, intensive program with world-class analysts
 - D.E. Shaw Connect — Invited to NYC to connect with D.E. Shaw engineers and business execs
 - Management Leadership for Tomorrow (MLT) — Selected for 18-month intensive technology mentorship

@@ -14,12 +14,12 @@ Email: thiamharouna201@gmail.com
 LinkedIn: linkedin.com/in/harounathiam
 GitHub: github.com/harounat201
 
-One-liner: Sophomore CS + AI/ML student at Duke University building at the intersection of cloud infrastructure, AI systems, and impactful software. Returning intern at Amazon Web Services (EKS), previous intern at Amazon Devices, and recognized nationally for technical excellence.
+One-liner: Junior CS + AI/ML student at Duke University building at the intersection of cloud infrastructure, AI systems, and impactful software. Two-time Amazon intern (AWS EKS and Amazon Devices), undergraduate researcher at Duke Systems Group, and recognized nationally for technical excellence.
 
 --- ABOUT ---
 Pursuing a B.S. in Computer Science with a concentration in AI/ML at Duke (expected May 2028). Passionate about cloud infrastructure, distributed systems, and AI-driven applications.
 
-Interned at Amazon twice — first on the Fire Tablet Launcher team in Devices (Summer 2025), now returning to AWS on the Elastic Kubernetes Service (EKS) team (May 2026). Also supports graduate education at Duke's Fuqua School of Business as a Technical Coordinator & Grader, and conducts research on open-access academic publishing through Duke's Bass Connections program.
+Interned at Amazon twice — first on the Fire Tablet Launcher team in Devices (Summer 2025), then returning to AWS on the Elastic Kubernetes Service (EKS) team (Summer 2026). Also supported graduate education at Duke's Fuqua School of Business as a Technical Coordinator & Grader, and now does undergraduate research at Duke Systems Group on transparent GPU utilization sharing under Dr. Matthew Lentz.
 
 Background: African college student from Tampa, FL with West African roots (Senegalese/Mauritanian/Malian). Active in ColorStack@Duke, NSBE, and the AiiCE National Student Advisory Board.
 
@@ -30,15 +30,19 @@ Duke University — B.S. Computer Science + AI/ML, Durham NC, expected May 2028
 Coursework: Data Structures & Algorithms, Computer Systems, Discrete Mathematics, Probability, Distributed Systems, Linear Algebra
 
 --- SKILLS ---
-Languages: Python, Java, React, SQL, Kotlin, TypeScript/JavaScript, R, Swift, Go
-Infrastructure: AWS (Lambda, S3, Bedrock, SNS, Step Functions, EKS), Docker, Git, CI/CD, GitHub Actions, REST APIs, Distributed Systems, Firebase, Kubernetes
-AI/ML: LangChain, Vectorstores, Pandas, NumPy, TensorFlow, TensorFlow Lite, Prompt Engineering, RAG, Weaviate, Gemini API, Claude API
+Languages: Go, Python, Java, TypeScript, R, HTML, CSS, SQL, C
+Infrastructure: AWS (Lambda, S3, Bedrock, SNS, DynamoDB, EKS), Docker, Git, CI/CD, REST, Kubernetes, JUnit, MySQL, kind
+AI/ML/Data: LangChain, Weaviate, Pandas, Prompt Engineering, NumPy, TensorFlow, Codex, Claude Code, Cursor
 
 --- EXPERIENCE ---
 
 [1] Amazon Web Services (AWS) — SDE Intern (Returning)
-Team: Elastic Kubernetes Service (EKS) | May 2026 – Present | Santa Clara, CA
-THIS INTERNSHIP HAS NOT STARTED YET. DO NOT DESCRIBE IT AS CURRENT OR ONGOING EXPERIENCE. Returning to build cloud-native Kubernetes infrastructure at scale.
+Team: Elastic Kubernetes Service (EKS) | May 2026 – Aug 2026 | Santa Clara, CA
+- Architected a highly-available notification scheduler in Go that monitors certificate authority changes in 600k+ Kubernetes clusters
+- Deployed serverless architecture to route expiry messages with AWS (Lambda, Elastic Beanstalk) to mitigate TLS failure in 9,900+ companies
+- Developed a serverless async reconciliation loop to redrive failures in a state machine, achieving 99% message send rates
+- Implemented an atomic transaction model for writes to DynamoDB, preventing desyncs between CA operations and notifications
+- Wired notification coverage for all AWS partitions, implementing DNS lookup for on-deployment endpoint building & integrations
 
 [2] Amazon — SDE Intern
 Team: Devices — Fire Tablet Launcher | May–August 2025 | Seattle, WA
@@ -60,7 +64,12 @@ Resume bullets:
 - Implemented an Utterance Validation Framework with S3 handoffs to validate Alexa text-to-speech
 - Ensured code quality with automated testing suites (unit, integration, load) using JUnit in a CI/CD pipeline
 
-[3] Duke University — Fuqua School of Business
+[3] Duke University — Bass Connections
+Role: ML Research Intern | March 2026 – Present | Durham, NC
+Project: Open Access Academic Publishing Using Game Theory and Graph Theory (2026–2027)
+Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.
+
+[4] Duke University — Fuqua School of Business
 Role: Technical Coordinator & Grader | April 2025 – Present | Durham, NC
 Courses: DECISION 616 (Software Tools for Analytics), DECISION 523Q (Fraud Analytics)
 - Built a course autograder in Python/Pandas/Openpyxl → cut TA grading time by 42%
@@ -68,24 +77,24 @@ Courses: DECISION 616 (Software Tools for Analytics), DECISION 523Q (Fraud Analy
 - Facilitated new LMS integration for AI-enhanced graduate education
 - Managing graduate TAs across a 400+ student course
 
-[4] Duke University — Bass Connections
-Role: Software & AI Research Intern | March 2026 – Present | Durham, NC
-THIS POSITION HAS NOT STARTED YET. DO NOT DESCRIBE IT AS CURRENT OR ONGOING EXPERIENCE.
-Project: Open Access Academic Publishing Using Game Theory and Graph Theory (2026–2027)
+[5] Duke Systems Group — Undergraduate Researcher
+September 2026 – Present | Durham, NC
+- Investigating transparent GPU utilization sharing in Duke Compute Cluster (DCC) GPU partitions under Dr. Matthew Lentz
+- Using CPU preprofiling to simulate job memory usage (CUDACachingAllocator) to determine job placement in GPU clusters
 
-[5] Cornell Tech — Break Through Tech AI
+[6] Cornell Tech — Break Through Tech AI
 Role: AI Fellow | March 2026 – Present
 Building real-world AI/ML solutions for industry problem spaces. Includes ML foundations curriculum, AI Studio challenge projects, and 1:1 industry mentorship.
 
-[6] Goldman Sachs — Engineering Summit Fellow
+[7] Goldman Sachs — Engineering Summit Fellow
 December 2024 – May 2025
 Selected among top 13% of applicants for a multi-month intensive program with GS engineers and analysts.
 
-[7] Jane Street — UNBOXED Software Engineering Fellow
+[8] Jane Street — UNBOXED Software Engineering Fellow
 July 2024 | New York, NY
 One of 38 students selected nationally. Simulated real-world trading strategies using quantitative finance; team placed 2nd in the JS UNBOXED Estimathon.
 
-[8] ZSuite Technologies — AI/ML SWE Intern
+[9] ZSuite Technologies — AI/ML SWE Intern
 June–August 2023
 - Built an LLM chatbot with Python + LangChain for customer service
 - Trained on company protocols; built Weaviate vector DB for RAG-based query accuracy
@@ -93,26 +102,33 @@ June–August 2023
 
 --- PROJECTS ---
 
-[1] Chorus — iOS Speech Fluency App (Nov 2025 – Feb 2026)
+[1] Reaper — Kubernetes Controller for Automatic Gang Protection in ML Training Clusters (May 2026)
+Stack: Go, Kubernetes, EKS, Karpenter, kind
+- Built a Kubernetes controller in Go automating GPU node lifecycles, automating cluster state changes with a reconciler for EKS
+- Designed an anti-disruption policy layer to automatically protect GPU node gang schedules from deprovisioning on Karpenter
+- Validated end-to-end against a multi-node kind cluster with simulated GPU node pools and distributed training job manifests
+- Designed first-fit bin-packing logic to detect consolidation candidates, flagging underutilized GPU nodes for Karpenter rightsizing
+
+[2] Chorus — iOS Speech Fluency App (Nov 2025 – Feb 2026)
 Stack: Swift, SwiftUI, AVFoundation
 Apple Student Swift Challenge submission. iOS app leveraging Delayed Auditory Feedback (DAF) and choral speech synthesis to help people who stutter improve fluency. Adaptive interface supports both presentation mode and screen-off conversation mode. Translates the scientifically documented "choral effect" into an accessible mobile tool.
 
-[2] Odyssey: 30 Day Journey — HackDuke 1st Place (Feb 2025)
+[3] Odyssey: 30 Day Journey — HackDuke 1st Place (Feb 2025)
 Stack: Flutter, Gemini API
 Built at HackDuke for an interactive daily sustainability challenge platform. Used Gemini API to dynamically generate personalized challenges and gamify user progress. 150+ downloads.
 
-[3] Florida GreenGuard AI — Congressional App Challenge 1st Place, Florida (Nov 2023)
+[4] Florida GreenGuard AI — Congressional App Challenge 1st Place, Florida (Nov 2023)
 Stack: Kotlin, TensorFlow, TensorFlow Lite, OpenAI API
 Mobile app detecting invasive plant species via on-device TensorFlow image classification. Integrated OpenAI API via Kotlin coroutines for async plant descriptions. Optimized for offline use with TF Lite.
 
-[4] EduTrade — PennApps Hackathon 2024
+[5] EduTrade — PennApps Hackathon 2024
 Stack: Firebase, AI/ML, FinTech
 - AI-powered stock options platform designed for beginner investors
 - Personalized questionnaire tailors stock recommendations to each user's risk profile and goals
 - Firebase auth backend with full login/account system
 - Personalized stock suggestions paired with visual aids; sentiment analysis feature iterates across financial news articles to gauge stock outlook
 
-[5] LinkedIn Voyage — LinkedIn Learning Feature Revamp (June 2025)
+[6] LinkedIn Voyage — LinkedIn Learning Feature Revamp (June 2025)
 Stack: Gemini API, RAG, Prompt Engineering
 Designed and presented a revamp of LinkedIn Learning's 'Career Charter' feature to LinkedIn engineers and executives at HQ. Used Gemini API + RAG for dynamic, context-aware course recommendations.
 
@@ -129,7 +145,7 @@ Designed and presented a revamp of LinkedIn Learning's 'Career Charter' feature 
 --- PROFESSIONAL DEVELOPMENT ---
 - Amazon Future Engineer — 400 students internationally
 - LinkedIn Possibilities in Tech — 25 students internationally
-- Walmart Technology Summit — ~100 selected tech students
+- Walmart Global Tech SWE Fellow — <1.5% of applicants selected
 - Goldman Sachs Engineering Summit — 13% selection rate
 - D.E. Shaw Connect — invited to NYC HQ
 - Management Leadership for Tomorrow (MLT) — 18-month intensive tech mentorship

@@ -67,22 +67,40 @@ const SECTIONS = {
   Experience: {
     items: [
       {
-        label: 'Duke Bass',
-        logo: './logos-assets/bass-connections-logo.png',
-        headline: 'ML Research Intern',
-        company: 'Duke University · Bass Connections',
-        date: 'Incoming 2026',
-        body: 'Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.',
-        meta: ['Python, ML/AI, Graph Theory, Game Theory'],
+        label: 'Duke Systems',
+        logo: 'https://www.google.com/s2/favicons?domain=duke.edu&sz=64',
+        headline: 'Undergraduate Researcher',
+        company: 'Duke Systems Group',
+        date: 'Sept 2026 – Current',
+        meta: ['GPU Scheduling, CUDA, Systems Research'],
+        bullets: [
+          'Investigating transparent GPU utilization sharing in Duke Compute Cluster (DCC) GPU partitions under Dr. Matthew Lentz',
+          'Utilizing CPU preprofiling to simulate job memory usage (CUDACachingAllocator) to determine job placement in GPU clusters',
+        ],
       },
       {
         label: 'AWS EKS',
         logo: 'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=64',
-        headline: 'Software Development Intern',
+        headline: 'Software Development Engineer Intern',
         company: 'Amazon Web Services · Elastic Kubernetes Service',
-        date: 'May – Aug 2026 (Returning)',
-        body: 'Returning internship on the EKS team at Amazon Web Services, focusing on cloud-native Kubernetes infrastructure at scale.',
-        meta: ['Cloud Infrastructure, Kubernetes'],
+        date: 'May 2026 – Aug 2026 (Returning)',
+        meta: ['Go, AWS (Lambda, EB, DynamoDB), Kubernetes, State Machines'],
+        bullets: [
+          'Architected a highly-available notification scheduler in Go that monitors cert. authority changes in 600k+ Kubernetes clusters',
+          'Deployed serverless architecture to route expiry messages with AWS (Lambda, EB) to mitigate TLS failure in 9,900+ companies',
+          'Developed a serverless async reconciliation loop to redrive failures in a state machine, achieving 99% message send rates',
+          'Implemented an atomic transaction model for writes to DynamoDB, preventing desyncs between CA operations and notifications',
+          'Wired notification coverage for all AWS partitions, implementing DNS lookup for on-deployment endpoint building & integrations',
+        ],
+      },
+      {
+        label: 'Duke Bass',
+        logo: './logos-assets/bass-connections-logo.png',
+        headline: 'ML Research Intern',
+        company: 'Duke University · Bass Connections',
+        date: 'March 2026 – Present',
+        body: 'Researching open-access academic publishing using game theory and graph theory, building AI/ML models and tools to analyze publishing dynamics across academic networks.',
+        meta: ['Python, ML/AI, Graph Theory, Game Theory'],
       },
       {
         label: 'Amazon',
@@ -137,15 +155,21 @@ const SECTIONS = {
         link: { label: 'View Architecture & Implementation Paper', href: './Grade Automation for Graduate Coursework- A Product Overview.pdf' },
       },
       {
-        label: 'Publishing',
-        headline: 'Open Access Academic Publishing Using Game Theory and Graph Theory (2026-2027)',
-        body: 'Researching academic publishing dynamics using game theory and graph theory, building AI/ML models to analyze incentive structures across academic networks.',
-        meta: ['Duke Bass Connections — 2026', 'Game Theory, Graph Theory, ML', 'Starts 2026'],
+        label: 'GPU Sharing',
+        headline: 'Transparent GPU Utilization Sharing in Duke Compute Cluster',
+        body: 'Investigating transparent GPU utilization sharing across DCC GPU partitions under Dr. Matthew Lentz. Using CPU preprofiling to simulate job memory usage (CUDACachingAllocator) to inform job placement in GPU clusters.',
+        meta: ['Duke Systems Group — Sept 2026', 'GPU Scheduling, CUDA, Systems', 'Ongoing'],
       },
     ],
   },
   Projects: {
     items: [
+      {
+        label: 'Reaper',
+        headline: 'Reaper: Kubernetes Controller for Gang Protection',
+        body: 'Kubernetes controller in Go automating GPU node lifecycles for ML training clusters. Anti-disruption policy layer protects GPU node gang schedules from deprovisioning on Karpenter, with first-fit bin-packing logic to flag underutilized nodes for rightsizing.',
+        meta: ['Go, Kubernetes, EKS, Karpenter, kind', 'Validated on multi-node kind cluster', 'May 2026'],
+      },
       {
         label: 'Chorus',
         headline: 'Chorus',
@@ -317,8 +341,8 @@ const SECTIONS = {
       {
         label: 'Walmart',
         logo: 'https://www.google.com/s2/favicons?domain=walmart.com&sz=64',
-        headline: 'Walmart Global Tech Summit',
-        title: 'Tech Summit Fellow',
+        headline: 'Walmart Global Tech',
+        title: 'SWE Fellow',
         body: 'Part of <1.5% of applicants invited to the tech track at Walmart HQ in Bentonville, AR to engage with industry leaders on AI and automation at Walmart.',
         meta: ['Walmart Global Tech', 'Bentonville, AR', 'AI & Automation'],
       },
